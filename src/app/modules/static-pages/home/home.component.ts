@@ -1,0 +1,250 @@
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { CurrentUserService } from "../../../common/services/user/current-user.service"
+import { CustomValidators } from "../../../common/directive/custom-validator.directive";
+import { AuthRestService } from 'src/app/common/services/auth/auth-rest.service';
+import { AppApi } from "../../../../app/app-api";
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
+@Component({
+  'selector': 'app-home',
+  'templateUrl': './home.component.html',
+  'styleUrls': ['./home.component.css']
+})
+export class HomeComponent implements OnInit {
+  registerForm: FormGroup
+  loginForm: FormGroup
+  forgetForm: FormGroup;
+  stepTwo: boolean = false;
+  modalRef: BsModalRef | null;
+  modalRef2: BsModalRef;
+  public mask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/,/\d/];
+
+  education = [{ id: 1, name: 'School' }, { id: 2, name: 'Bachelors' }, { id: 3, name: 'Masters' }, { id: 4, name: 'PHD' }];
+  startyear = ['2021','2020','2019','2018','2017','2016','2015','2014','2013','2012','2011','2010'];
+  endyear = ['2021','2020','2019','2018','2017','2016','2015','2014','2013','2012','2011','2010'];
+  constructor(
+    public currentUserService: CurrentUserService,
+    public authRestService: AuthRestService,
+    private router: Router,
+    private modalService: BsModalService
+  ) {
+
+  }
+  ngOnInit() {
+    this.registerForm = new FormGroup({
+      email: new FormControl("", [Validators.required, CustomValidators.vaildEmail]),
+      role_id: new FormControl("2", []),
+      name: new FormControl("", [Validators.required]),
+      phone: new FormControl("", [Validators.required]),
+      company_name: new FormControl("", []),
+      end_year: new FormControl("", []),
+      start_year: new FormControl("", []),
+      profile: new FormControl("", []),
+      education_detail: new FormControl("", []),
+      education: new FormControl("", []),
+      experience: new FormControl("", []),
+      password: new FormControl("", [Validators.required, Validators.maxLength(20), Validators.minLength(6)]),
+      confirmPassword: new FormControl('', [Validators.required]),
+      rememberMe: new FormControl('', [Validators.required]),
+      location: new FormControl('', []),
+      business_name: new FormControl('', []),
+      Image: new FormControl('', [])
+    });
+    this.loginForm = new FormGroup({
+      email: new FormControl("", [Validators.required]),
+      password: new FormControl("", [Validators.required, Validators.maxLength(20), Validators.minLength(6)]),
+    });
+    this.forgetForm = new FormGroup({
+      email: new FormControl("", [Validators.required])
+    });
+  }
+
+
+  setFormToEmployer(type) {
+
+    if (type == "1") {
+      this.registerForm.controls.education.setErrors(null);
+      this.registerForm.controls.experience.setErrors(null);
+    } else {
+      this.registerForm.controls.education.setErrors(null);
+      this.registerForm.controls.experience.setErrors(null);
+    }
+
+    this.registerForm.patchValue({
+      role_id: type
+    })
+  }
+
+  submitForm(type) {
+    if (this.registerForm.valid) {
+      if (!this.stepTwo) {
+        this.stepTwo = true;
+        // this.registerForm.value.education.setErrors({ required: true })
+        // this.registerForm.value.education.experience({ required: true })
+      } else {
+        delete this.registerForm.value.confirmPassword
+        this.authRestService
+          .postApiWitoutToken(AppApi.registerUrl, this.registerForm.value)
+          .then((response) => {
+            if (response.status === 1 && response.code === 201) {
+              this.registerForm.reset();
+              this.modalRef.hide();
+              Swal.fire({
+                title: response.message,
+                icon: 'success',
+                timer: 5000,
+                position: "top-right",
+                toast: true,
+                showCancelButton: false,
+                showConfirmButton: false
+              })
+
+            } else if (response.status === 0 && response.code === 201) {
+              Swal.fire({
+                title: response.message,
+                icon: 'success',
+                timer: 5000,
+                position: "top-right",
+                toast: true,
+                showCancelButton: false,
+                showConfirmButton: false
+              })
+            } else {
+              Swal.fire({
+                title: response.message,
+                icon: 'error',
+                timer: 5000,
+                position: "top-right",
+                toast: true,
+                showCancelButton: false,
+                showConfirmButton: false
+              });
+            }
+          });
+      }
+    } else {
+      this.currentUserService.validateAllFormFields(this.registerForm);
+    }
+
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  login() {
+    if (this.loginForm.valid) {
+      this.authRestService
+        .postApiWitoutToken(AppApi.loginUrl, this.loginForm.value)
+        .then((response) => {
+          if (response.status === 1 && response.code === 201) {
+            this.currentUserService.setVerifiedUser(response);
+            this.loginForm.reset();
+            this.modalRef.hide();
+            this.router.navigate(['/job-listing']);
+            Swal.fire({
+              title: response.message,
+              icon: 'success',
+              timer: 5000,
+              position: "top-right",
+              toast: true,
+              showCancelButton: false,
+              showConfirmButton: false
+            })
+
+          } else if (response.status === 0 && response.code === 201) {
+            Swal.fire({
+              title: response.message,
+              icon: 'success',
+              timer: 5000,
+              position: "top-right",
+              toast: true,
+              showCancelButton: false,
+              showConfirmButton: false
+            })
+          } else {
+            Swal.fire({
+              title: response.message,
+              icon: 'error',
+              timer: 5000,
+              position: "top-right",
+              toast: true,
+              showCancelButton: false,
+              showConfirmButton: false
+            });
+          }
+        })
+
+    } else {
+      this.currentUserService.validateAllFormFields(this.loginForm);
+    }
+  }
+
+  loginModalOpen(content) {
+    this.modalRef.hide();
+    this.modalService.show(content);
+  }
+
+  forgetPasswordForm() {
+    if (this.forgetForm.valid) {
+      this.authRestService
+        .postApiWitoutToken(AppApi.forgetUrl, this.forgetForm.value)
+        .then((response) => {
+          if (response.status === 1 && response.code === 201) {
+            Swal.fire({
+              title: response.message,
+              icon: 'success',
+              timer: 5000,
+              position: "top-right",
+              toast: true,
+              showCancelButton: false,
+              showConfirmButton: false
+            })
+
+          } else if (response.status === 0 && response.code === 201) {
+            Swal.fire({
+              title: response.message,
+              icon: 'success',
+              timer: 5000,
+              position: "top-right",
+              toast: true,
+              showCancelButton: false,
+              showConfirmButton: false
+            })
+          } else {
+            Swal.fire({
+              title: response.message,
+              icon: 'error',
+              timer: 5000,
+              position: "top-right",
+              toast: true,
+              showCancelButton: false,
+              showConfirmButton: false
+            });
+          }
+        })
+
+    } else {
+      this.currentUserService.validateAllFormFields(this.forgetForm);
+    }
+  }
+
+  /**
+* Validate the password and confirm password
+* @param formGroup form group
+*/
+  validateConfirmPassword(registerForm) {
+    if (registerForm.value.password !== '' && registerForm.value.confirmPassword !== '') {
+      if (registerForm.value.password !== registerForm.value.confirmPassword) {
+        registerForm.controls.confirmPassword.setErrors({
+          passwordMismatch: true
+        });
+      } else {
+        registerForm.controls.confirmPassword.setErrors(null);
+      }
+    }
+  }
+}

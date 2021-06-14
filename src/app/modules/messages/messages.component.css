@@ -1,0 +1,304 @@
+
+.how-it-process ul li img {
+    display: none;
+}
+
+/* width */
+.posting-table tbody::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  /* Track */
+  .posting-table tbody::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+/*profile page*/
+.profile-card-inner{
+    border: 1px solid #ededed;
+    max-width: 500px;
+    margin: 60px auto;
+    border-radius: 4px;
+    padding: 60px 0;
+}
+.profile-thumb{
+    margin: auto;
+    width: 100px;
+    border-radius: 50%;
+}
+.profile-thumb img{
+    border-radius: 50%;
+}
+.profile-card-inner ul li{
+    display: flex;
+    margin-bottom: 20px;
+}
+.profile-card-inner ul{
+    width: 60%;
+    padding-left: 0;
+    margin: 40px auto;
+}
+.profile-card-inner .label{
+    color:#666666;
+    font-size: 14px;
+    font-weight: 400;
+    width: 100px;
+}
+.profile-card-inner .label-value{
+    color:#333333;
+    font-size: 14px;
+    font-weight: 600;
+}
+.profile-card-inner .primary-btn{
+    max-width: 165px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 12px;
+}
+/*job -detail*/
+
+
+
+
+
+/*Responsive*/
+
+
+
+@media only screen and (min-width:768px) {
+    .chat-menu,.post-job-btn{
+        display: none;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .login-btn li a {
+        padding: 8px 20px;
+        font-size: 13px;
+    }  
+.nav ul li {
+    margin: 0 0px;
+    font-size: 15px;
+}
+header.site-header.inner-header .nav .cart-section ul li {
+    margin: 0 10px;
+}
+.navbar li {
+    padding: 0 8px;
+	font-size: 15px;
+}
+.header-nav .login-btn ul li a {
+    font-size: 14px;
+}  
+    .hero-carousel .carousel-caption{
+        top:160px;
+    }
+	td.author-image {
+    text-align: center;
+}
+.posting-table table tr:first-child td.chart-btn {
+    width: 210px !important;
+}
+.blue-scheme table td:first-child {
+    width: 160px !important;
+}
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .recent-jobs h2 {
+        margin-bottom: 40px;
+    }
+    .posting-table table th,.posting-table table td{
+        width:auto !important;
+        min-width:fit-content!important;
+    }
+	.about-imgs.content-right {
+    padding-left: 20px;
+}
+.about-imgs.content-left {
+    padding-right: 20px;
+}
+  }
+
+
+ @media only screen and (max-width:767px) {
+    .pricing-table{
+        flex-direction: column;
+    }
+    .pricing-card.annual-access {
+        padding-left: 20px;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    .pricing-card.monthly-plan {
+        margin-right: 0;
+        padding-right: 20px;
+        margin-bottom: 20px;
+    }
+
+.inner-banner {
+    padding: 50px 0;
+	background-position: bottom center;
+}
+.login-btn li a.post-job-btn {
+    font-size: 10px;
+    font-size: 12px;
+}
+    .cart-section{
+        margin: 0;
+    }
+    .logo img{
+        max-width: 150px;
+    }
+.pricing-table {
+    padding: 40px 0 50px;
+}
+.cancel-membership {
+    margin-bottom: 60px;
+    font-size: 14px;
+}
+.pricing-card.lifetime-plan {
+    top: 0;
+}
+.pricing-card .plan-price {
+    margin-top: 0;
+}
+.posting-table table {
+    width: 760px;
+    overflow: scroll;
+}
+.job-details {
+    padding: 30px 0;
+}
+.job-details-title h5{
+    font-size: 20px;
+}
+.job-details-title p{
+    font-size: 16px;
+}
+.search{
+    width: 80%;
+}
+.chat-box .col-4 .bg-white{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    height: 500px;
+    overflow-y: scroll;
+}
+.chat-box .col-8{
+    width: 100%;
+}
+.messages-box, .chat-box{
+    height: 100%;
+    position: relative;
+    overflow-y: scroll !important;
+}
+#myTabContent{
+    height: 500px;
+    position: relative;
+    overflow-y: scroll !important;
+}
+.chat-box .input-group{
+    bottom: 0;
+    position: absolute;
+}
+.recent-btn {
+    background-color: #2557a7;
+    color: #fff;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    border-radius: 4px;
+    width: 115px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 700;
+    z-index: 2;
+}
+.fixed-blog .col-3 {
+    position: fixed;
+    z-index: 1;
+    top: 75px;
+    box-shadow: 0 0 14px 2px rgb(0 0 0 / 20%);
+}
+.recent-posts.show1 {
+    left: -10px;
+    opacity: 1;
+    visibility: visible;
+    display: block !important;
+}
+.chat-wrapper form{
+    position: static;
+}
+}
+
+
+
+
+
+
+@media only screen and (max-width: 480px){
+.header-nav {
+    display: block;
+    text-align: center;
+}
+.logo {
+    padding: 0 0 10px;
+}
+.inner-header .nav {
+    display: block;
+}
+.cart-section ul {
+    display: block;
+    margin: 0;
+
+}
+.nav .cart-section ul li {
+    margin: 0 10px;
+    vertical-align: middle;
+}
+.cart-section {
+    margin: 10px 0 0;
+}
+.user-menu-wrap {
+    width: 100%;
+}
+.cart-section ul li .nav-dropdown {
+    display: block;
+}
+.nav ul li .user-menu-wrap a {
+    font-size: 13px;
+}
+.nav-dropdown {
+    display: none;
+}
+.remeber label, .forget-section a {
+    font-size: 12px;
+}
+.forget-section {
+    align-items: center;
+}
+.hero-carousel .carousel-caption h1, .hero-carousel .carousel-caption p {
+    display: none;
+}
+.hero-carousel .carousel-caption {
+    transform: translate(-64%, -50%);
+}
+.toggle-btn {
+    position: absolute;
+    right: 20px;
+}
+.nav ul, .login-btn {
+    margin-left: 0;
+    padding: 0;
+}
+.about-imgs p {
+    line-height: 24px;
+    font-size: 15px;
+}
+section.about-page .row {
+    margin-bottom: 30px;
+}
+}

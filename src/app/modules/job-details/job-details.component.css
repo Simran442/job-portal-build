@@ -1,0 +1,275 @@
+
+/* about us css ends here */
+
+/* settings css ends */
+
+/* guri css ends here */
+
+  /* Track */
+  .messages-box::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    margin-right: 10px;
+    position: relative;
+    right:10px;
+  }
+   
+  /* Handle */
+  .messages-box::-webkit-scrollbar-thumb {
+    background: #2557a7;
+  }
+  .chat-box{
+      margin:50px 0;
+  }
+
+  .image-upload{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #ebeced;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+  }
+  .image-upload #formFileSm{
+    position: absolute;
+    text-indent: -99999px;
+    left: 0;
+    width: 70px;
+    height: 70px;
+
+  }
+  .image-upload i{
+      font-size: 24px;
+      color:#a7b3bf;
+
+  }
+  .tab-pane .remeber{
+      display: flex;
+      margin-bottom: 30px;
+      margin-top: 15px;
+  }
+  .tab-pane label{
+      margin-left:5px;
+  }
+  .tab-pane .remeber input[type="checkbox"]{
+     margin-top:5px;
+  }
+  .chat-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #2557a7;
+    color:#fff;
+    font-size:20px;
+    padding:20px;
+    font-weight: 600;
+    margin-bottom:20px;
+  }
+  .chat-header h3,.chat-header span i,.chat-header span{
+      color:#fff;
+      font-size: 20px;
+  }
+  .chat-header span i{
+  transform: rotate(90deg);
+  }
+  .chat-wrapper h6{
+      margin-bottom: 0;
+      font-size: 14px;
+      color:#222;
+      font-weight: 600;
+  }
+  .chat-wrapper p{
+      font-size: 14px;
+      color:#959595;
+      margin: 0;
+  }
+  .chat-wrapper small{
+      font-size: 11px;
+      margin-left: 4px;
+      color:#777777;
+  }
+  .reciever-message {
+    background-color: #f0f4fa;
+    padding: 10px;
+    max-width: 300px;
+    margin-left: 20px;
+    float: left;
+    width: 100%;  
+    clear: both;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    position: relative;
+}
+.sender-message {
+    background-color: #f0f0f0;
+    padding: 10px;
+    max-width: 300px;
+    margin-right: 20px;
+    width: 100%;
+    float: right;  
+    clear: both;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+.reciever-message:after {
+    font-family: "Font Awesome 5 Brands";
+    content: "\f0d7";
+    color: grey;
+    content: "\f0da";
+}
+.chat-wrapper form{
+    clear: both;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.input-group .form-control{
+    border:0;
+    padding: 0 20px;
+}
+.chat-box .tab-content{
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 0;
+}
+.message-list{
+    padding-left: 0;
+}
+.header-nav .user-menu{
+    border-radius: 8px;
+    padding-left: 0;
+    width:210px;
+    padding-bottom: 10px;
+    margin-top: 15px;
+    right: 0;
+}
+
+
+
+/*profile page*/
+.profile-card-inner{
+    border: 1px solid #ededed;
+    max-width: 500px;
+    margin: 60px auto;
+    border-radius: 4px;
+    padding: 60px 0;
+}
+.profile-thumb{
+    margin: auto;
+    width: 100px;
+    border-radius: 50%;
+}
+.profile-thumb img{
+    border-radius: 50%;
+}
+.profile-card-inner ul li{
+    display: flex;
+    margin-bottom: 20px;
+}
+.profile-card-inner ul{
+    width: 60%;
+    padding-left: 0;
+    margin: 40px auto;
+}
+.profile-card-inner .label{
+    color:#666666;
+    font-size: 14px;
+    font-weight: 400;
+    width: 100px;
+}
+.profile-card-inner .label-value{
+    color:#333333;
+    font-size: 14px;
+    font-weight: 600;
+}
+.profile-card-inner .primary-btn{
+    max-width: 165px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 12px;
+}
+
+
+.search{
+    border: 1px solid #c4c4c4;
+    width: 500px;
+    overflow-x: hidden;
+    display: flex;
+    border-radius: 50px;
+    font-size: 18px;
+    position: absolute;
+    left: 50%;
+    bottom: -25px;
+    background-color: #fff;
+    align-items: center;
+    transform: translateX(-50%);
+}
+.search input{
+    width:100%;
+    border: none;
+    padding: 16px 20px;
+    outline: none;
+    font-size: 18px;
+    color: #333;
+    font-weight: 400;
+   
+}
+.search input::placeholder{
+    color:#333;
+    font-weight: 400;
+}
+.button-src span{
+    color: #2557a7;
+    margin-right: 20px;
+    margin-top: 2px;
+    display: block;
+    font-size: 18px;
+}
+
+
+
+
+@media only screen and (min-width:768px) {
+    .chat-menu,.post-job-btn{
+        display: none;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .login-btn li a {
+        padding: 8px 20px;
+        font-size: 13px;
+    }  
+.nav ul li {
+    margin: 0 0px;
+    font-size: 15px;
+}
+header.site-header.inner-header .nav .cart-section ul li {
+    margin: 0 10px;
+}
+.navbar li {
+    padding: 0 8px;
+	font-size: 15px;
+}
+.header-nav .login-btn ul li a {
+    font-size: 14px;
+}  
+    .hero-carousel .carousel-caption{
+        top:160px;
+    }
+	td.author-image {
+    text-align: center;
+}
+.posting-table table tr:first-child td.chart-btn {
+    width: 210px !important;
+}
+.blue-scheme table td:first-child {
+    width: 160px !important;
+}
+  }
+
+
+
+
+

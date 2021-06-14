@@ -1,0 +1,540 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+<!-- <app-header></app-header> -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-nav">
+      <div class="logo">
+        <img routerLink="" src="../../../assets/images/logo.png" />
+      </div>
+      <div class="nav">
+        <span class="close-btn"><img src="../../../assets/images/cancel.svg" alt="cancel-btn"></span>
+        <ul class="navbar">
+          <li><a href="#">How it works</a></li>
+          <li><a href="#" routerLink="./about">About</a></li>
+          <li><a href="#" routerLink="./contact">Contact</a></li>
+        </ul>
+        <div class="login-btn">
+          <li><a class="loginbtn" (click)="openModal(loginTem)" id="loginbutton">Login</a></li>
+          <li><a (click)="openModal(template)" class="sign-up">Sign up</a>
+          </li>
+        </div>
+        <div class="toggle-btn">
+          <img src="../../../assets/images/menu.svg" alt="toggle">
+        </div>
+      </div>
+      <button hidden id="loginbutton"></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero-carousel">
+  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="5000">
+        <img src="../../../../assets/images/slider1.jpg" class="d-block w-100" alt="...">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Best Place to Find Real Talent</h1>
+            <p>With Thousands Of Remote Staff To Choose From</p>
+            <a href="#" routerLink="/job-listing">Explore Jobs</a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="../../../../assets/images/slider2.jpg" class="d-block w-100" alt="...">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Best Place to Find Real Talent</h1>
+            <p>With Thousands Of Remote Staff To Choose From</p>
+            <a href="#" routerLink="/job-listing">Explore Jobs</a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="../../../../assets/images/slider3.jpg" class="w-100" alt="...">
+        <div class="container">
+          <div class="carousel-caption d-md-block">
+            <h1>Best Place to Find Real Talent</h1>
+            <p>With Thousands Of Remote Staff To Choose From</p>
+            <a href="#" routerLink="/job-listing">Explore Jobs</a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="../../../../assets/images/slider4.jpg" class="w-100" alt="...">
+        <div class="container">
+          <div class="carousel-caption d-md-block">
+            <h1>Best Place to Find Real Talent</h1>
+            <p>With Thousands Of Remote Staff To Choose From</p>
+            <a href="#" routerLink="/job-listing">Explore Jobs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="down-arrow">
+      <span class="lnr lnr-arrow-down"></span>
+    </div>
+  </div>
+  <!-- </div> -->
+</section>
+<section class="recent-jobs">
+  <div class="container">
+    <h2 class="section-title text-center">Most Recent <span>Jobs</span></h2>
+    <div class="row g-4">
+      <div class="col-sm-6 col-xs-12 col-md-4 col-lg-4" routerLink="/job-listing">
+        <div class="recent-job-list">
+          <h3>Android Developer</h3>
+          <p>Skills Required:<span> Angular, JQuery, Ruby, Vue.js</span></p>
+          <p>$ 15.50 / hour</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12 col-md-4 col-lg-4" routerLink="/job-listing">
+        <div class="recent-job-list">
+          <h3>Digital Marketing Expert</h3>
+          <p>Skills Required:<span> SEO, PPC, Email, Optimization</span></p>
+          <p>$ 15.50 / hour</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12 col-md-4 col-lg-4" routerLink="/job-listing">
+        <div class="recent-job-list">
+          <h3>UI Designer</h3>
+          <p>Skills Required:<span>Photoshop, XD, Figma</span></p>
+          <p>$ 15.50 / hour</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12 col-md-4 col-lg-4" routerLink="/job-listing">
+        <div class="recent-job-list">
+          <h3>UX Designer</h3>
+          <p>Skills Required:<span> Angular, JQuery, Html, Css</span></p>
+          <p>$ 15.50 / hour</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12 col-md-4 col-lg-4" routerLink="/job-listing">
+        <div class="recent-job-list">
+          <h3>PHP Developer</h3>
+          <p>Skills Required:<span>Wordpress, Shopify</span></p>
+          <p>$ 15.50 / hour</p>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12 col-md-4 col-lg-4" routerLink="/job-listing">
+        <div class="recent-job-list">
+          <h3>Team Lead .net</h3>
+          <p>Skills Required:<span>ASP, Databases, MVP, MCSD</span></p>
+          <p>$ 15.50 / hour</p>
+        </div>
+      </div>
+    </div>
+    <a href="#" routerLink="/job-listing" class="primary-btn text-center">Explore More</a>
+  </div>
+</section>
+<section class="about">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-xs-12 col-sm-6 col-lg-6">
+        <img src="../../../assets/images/about-us.jpg" alt="about" class="rounded">
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-6">
+        <div class="about-desc">
+          <h2 class="section-title">About <span>Us</span></h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+          <a href="#" routerLink="./about" class="primary-btn">Read More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="how-it-work text-center">
+  <div class="container">
+    <h2 class="section-title text-center">How it <span>Works</span></h2>
+    <img src="../../../assets/images/darrow.png">
+    <ul class="nav  mb-3 justify-content-center" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+          aria-controls="pills-home" aria-selected="true">Finding Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+          aria-controls="pills-profile" aria-selected="false">Posting Jobs</a>
+      </li>
+    </ul>
+    <div class="tab-content how-it-process" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="how-it-process">
+          <ul>
+            <li>Join Job<br> Portal Free <img src="../../../assets/images/blue-arrow.png" alt="arrow"></li>
+            <li>Search Desired<br> Job <img src="../../../assets/images/blue-arrow.png" alt="arrow"></li>
+            <li>Apply <img src="../../../assets/images/blue-arrow.png" alt="arrow"></li>
+            <li>Start Working</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="how-it-process">
+          <ul>
+            <li>Join Job<br> Portal Free</li>
+            <li>Search Desired<br> Job</li>
+            <li>Apply</li>
+            <li>Start Working</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
+<!--popup--->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<!-- <div class="modal fade hmodal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span class="lnr lnr-cross"></span>
+      </button>
+      <div class="modal-body">
+        <h4 class="section-title">Join <span>Job Portal</span></h4>
+        <h6>I’m a:</h6>
+        <form [formGroup]="registerForm" >
+          <ul class="radio-outer" id="myTab" role="tablist">
+            <div class="radio active" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home"
+              aria-selected="true">
+              <input id="radio-1"  type="radio"  formControlName="role_id" value="2">
+              <label for="radio-1" class="radio-label" (click)="setFormToEmployer(2)">Job Seeker</label>
+            </div>
+            <div class="radio" id="profile-tab" data-toggle="tab" role="tab" aria-controls="profile"
+              aria-selected="false">
+              <input id="radio-2" type="radio"  formControlName="role_id" >
+              <label for="radio-2" class="radio-label" (click)="setFormToEmployer(1)">Employer</label>
+            </div>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="education">
+                <div class="form" *ngIf="!stepTwo">
+                  <span class="image-upload"><input id="formFileSm" type="file" /><i class="fas fa-camera"></i></span>
+                </div>
+                <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
+                  <input type="text" class="form-control" placeholder="education" formControlName="education" >
+                  <show-errors [control]="registerForm.controls.education"></show-errors>
+                </div>
+                <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
+                  <input type="text" class="form-control" placeholder="experience" formControlName="experience" >
+                  <show-errors [control]="registerForm.controls.experience"></show-errors>
+                </div>
+                <div class="form" *ngIf="registerForm.value.role_id == 1 && stepTwo">
+                  <input type="text" class="form-control" placeholder="location" formControlName="location" >
+                  <show-errors [control]="registerForm.controls.location"></show-errors>
+                </div>
+                <div class="form" *ngIf="registerForm.value.role_id == 1 && stepTwo">
+                  <input type="text" class="form-control" placeholder="business/ Indiviual name" formControlName="business_name" >
+                  <show-errors [control]="registerForm.controls.business_name"></show-errors>
+                </div>
+                <div class="form" *ngIf=" !stepTwo">
+                  <input type="text" class="form-control" placeholder="Name" formControlName="name" >
+                  <show-errors [control]="registerForm.controls.name"></show-errors>
+                </div>
+                <div class="form" *ngIf=" !stepTwo">
+                  <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                  <show-errors [control]="registerForm.controls.email"></show-errors>
+                </div>
+                <div class="form" *ngIf=" !stepTwo">
+                  <input type="text" class="form-control" placeholder="Phone Number" formControlName="phone">
+                  <show-errors [control]="registerForm.controls.phone"></show-errors>
+                </div>
+                <div class="form" *ngIf=" !stepTwo">
+                  <input type="password" class="form-control" placeholder="Password" formControlName="password">
+                  <show-errors [control]="registerForm.controls.password"></show-errors>
+                </div>
+                <div class="form" *ngIf=" !stepTwo">
+                  <input type="password" class="form-control" placeholder="Confirm Password"
+                    formControlName="confirmPassword" (blur)="validateConfirmPassword(registerForm)">
+                    <show-errors [control]="registerForm.controls.confirmPassword"></show-errors>
+                </div>
+                <div class="remeber" *ngIf=" !stepTwo">
+                  <input type="checkbox" id="rememberMe" formControlName="rememberMe">
+                  <label for="rememberMe">By clicking the button you confirm that you accept
+                    the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
+                  </label>
+                </div>
+                <show-errors [control]="registerForm.controls.rememberMe"></show-errors>
+              </div>
+            </div> -->
+<!-- Employers -->
+<!-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div class="education">
+                <div class="form">
+                  <span class="image-upload"><input id="formFileSm" type="file" /><i class="fas fa-camera"></i></span>
+                </div>
+                <div class="form">
+                  <input type="text" class="form-control" placeholder="Name" formControlName="employerName">
+                </div>
+                <div class="form">
+                  <input type="email" class="form-control" placeholder="Email" formControlName="employerEmail">
+                </div>
+                <div class="form">
+                  <input type="text" class="form-control" placeholder="Phone Number" formControlName="employerPhone">
+                </div>
+                <div class="form">
+                  <input type="password" class="form-control" placeholder="Password" formControlName="employerPassword">
+                </div>
+                <div class="form">
+                  <input type="password" class="form-control" placeholder="Confirm Password"
+                    formControlName="employerConfirmPassword">
+                </div>
+                <div class="remeber">
+                  <input type="checkbox" value="lsRememberMe" id="rememberMe" formControlName="tandc">
+                  <label for="rememberMe">By clicking the button you confirm that you accept
+                    the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
+                  </label>
+                </div>
+              </div>
+            </div> -->
+<!-- </div>
+          <button type="button" class="primary-btn text-center" (click)="submitForm('firststep')">Create Account</button>
+          <p class="already-acount">Already have an account? <a>Login here</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<ng-template #template>
+  <div class="hmodal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+          <span class="lnr lnr-cross"></span>
+        </button>
+        <div class="modal-body">
+          <h4 class="section-title">Join <span>JobPortal</span></h4>
+          <h6>I’m a:</h6>
+          <form [formGroup]="registerForm">
+            <ul class="radio-outer" id="myTab" role="tablist">
+              <div class="radio active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home"
+                aria-selected="true" (click)="setFormToEmployer('2')" >
+                <input id="radio-1" type="radio" formControlName="role_id" value="2">
+                <label for="radio-1" class="radio-label"  >Job Seeker</label>
+              </div>
+              <div class="radio" id="profile-tab" data-toggle="tab" role="tab" aria-controls="profile"
+                aria-selected="false" (click)="setFormToEmployer('1')">
+                <input id="radio-2" type="radio" formControlName="role_id" value="1"  >
+                <label for="radio-2" class="radio-label">Employer</label>
+              </div>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="education">
+                  <!-- <h4>Signup</h4> -->
+                  <div class="form" *ngIf="!stepTwo">
+                    <span class="image-upload"><input id="formFileSm" type="file" /><i class="fas fa-camera"></i></span>
+                  </div>
+                  <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
+                    <label>EDUCATION</label>
+                    <ngx-select [items]="education" formControlName="education" placeholder="Select education">
+                    </ngx-select>
+                  </div>
+                  <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
+                    <input type="text" class="form-control" placeholder="Give DEtail about your education"
+                      formControlName="education_detail">
+                    <show-errors [control]="registerForm.controls.education_detail"></show-errors>
+
+                  </div>
+                  <label *ngIf="registerForm.value.role_id == 2 && stepTwo">Experience</label>
+                  <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
+                    <input type="text" class="form-control" placeholder="Company Name" formControlName="company_name">
+                    <show-errors [control]="registerForm.controls.company_name"></show-errors>
+                  </div>
+                  <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
+                    <ngx-select [items]="startyear" formControlName="start_year" placeholder="Start Date">
+                    </ngx-select>
+                  </div>
+                  <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
+                    <ngx-select [items]="endyear" formControlName="end_year" placeholder="End Date">
+                    </ngx-select>
+                  </div>
+                  <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
+                    <input type="text" class="form-control" placeholder="profile" formControlName="profile">
+                  </div>
+                  <div class="form" *ngIf="registerForm.value.role_id == 1 && stepTwo">
+                    <input type="text" class="form-control" placeholder="location" formControlName="location">
+                    <show-errors [control]="registerForm.controls.location"></show-errors>
+                  </div>
+                  <div class="form" *ngIf="registerForm.value.role_id == 1 && stepTwo">
+                    <input type="text" class="form-control" placeholder="business/ Indiviual name"
+                      formControlName="business_name">
+                    <show-errors [control]="registerForm.controls.business_name"></show-errors>
+                  </div>
+                  <div class="form" *ngIf=" !stepTwo">
+                    <input type="text" class="form-control" placeholder="Name" formControlName="name">
+                    <show-errors [control]="registerForm.controls.name"></show-errors>
+                  </div>
+                  <div class="form" *ngIf=" !stepTwo">
+                    <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                    <show-errors [control]="registerForm.controls.email"></show-errors>
+                  </div>
+                  <div class="form" *ngIf=" !stepTwo">
+                    <input [textMask]="{mask: mask}"  type="text" class="form-control" placeholder="Phone Number" formControlName="phone">
+                    <show-errors [control]="registerForm.controls.phone"></show-errors>
+                  </div>
+                  <div class="form" *ngIf=" !stepTwo">
+                    <input type="password" class="form-control" placeholder="Password" formControlName="password">
+                    <show-errors [control]="registerForm.controls.password"></show-errors>
+                  </div>
+                  <div class="form" *ngIf=" !stepTwo">
+                    <input type="password" class="form-control" placeholder="Confirm Password"
+                      formControlName="confirmPassword" (blur)="validateConfirmPassword(registerForm)">
+                    <show-errors [control]="registerForm.controls.confirmPassword"></show-errors>
+                  </div>
+                  <div class="remeber" *ngIf=" !stepTwo">
+                    <input type="checkbox" id="rememberMe" formControlName="rememberMe">
+                    <label for="rememberMe">By clicking the button you confirm that you accept
+                      the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
+                    </label>
+                  </div>
+                  <show-errors [control]="registerForm.controls.rememberMe"></show-errors>
+                </div>
+              </div>
+              <!-- Employers -->
+              <!-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div class="education">
+                <div class="form">
+                  <span class="image-upload"><input id="formFileSm" type="file" /><i class="fas fa-camera"></i></span>
+                </div>
+                <div class="form">
+                  <input type="text" class="form-control" placeholder="Name" formControlName="employerName">
+                </div>
+                <div class="form">
+                  <input type="email" class="form-control" placeholder="Email" formControlName="employerEmail">
+                </div>
+                <div class="form">
+                  <input type="text" class="form-control" placeholder="Phone Number" formControlName="employerPhone">
+                </div>
+                <div class="form">
+                  <input type="password" class="form-control" placeholder="Password" formControlName="employerPassword">
+                </div>
+                <div class="form">
+                  <input type="password" class="form-control" placeholder="Confirm Password"
+                    formControlName="employerConfirmPassword">
+                </div>
+                <div class="remeber">
+                  <input type="checkbox" value="lsRememberMe" id="rememberMe" formControlName="tandc">
+                  <label for="rememberMe">By clicking the button you confirm that you accept
+                    the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
+                  </label>
+                </div>
+              </div>
+            </div> -->
+            </div>
+            <button type="button" class="primary-btn text-center" (click)="submitForm('firststep')">Create
+              Account</button>
+            <p class="already-acount">Already have an account? <a (click)="loginModalOpen(loginTem)">Login here</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!-- Login -->
+<ng-template #loginTem>
+  <div class="hmodal" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+          <span class="lnr lnr-cross"></span>
+        </button>
+        <div class="modal-body">
+          <h4 class="section-title">Login to <span>Job Portal</span></h4>
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="education">
+              <div class="form">
+                <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                <show-errors [control]="loginForm.controls.email"></show-errors>
+              </div>
+              <div class="form">
+                <input type="password" class="form-control" placeholder="Password" formControlName="password">
+                <show-errors [control]="loginForm.controls.password"></show-errors>
+              </div>
+            </div>
+            <div class="forget-section">
+              <div class="remeber">
+                <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember
+                  me?</label>
+              </div>
+              <a (click)="loginModalOpen(forgetTem)">Forgot Password?</a>
+            </div>
+            <!-- </div> -->
+            <!-- <a href="#" class="primary-btn text-center">Continue</a> -->
+            <button type="submit" class="primary-btn text-center">Continue</button>
+            <p class="already-acount">Don’t have an account? <a (click)="loginModalOpen(template)">Sign
+                Up
+                here</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!-- Forget Password -->
+
+<ng-template #forgetTem>
+  <div class="hmodal" id="forgot-passowrd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+          <span class="lnr lnr-cross"></span>
+        </button>
+        <div class="modal-body">
+          <h4 class="section-title">Forgot <span>Password</span></h4>
+          <form [formGroup]="forgetForm" (ngSubmit)="forgetPasswordForm()">
+            <div class="education">
+              <div class="form">
+                <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                <show-errors [control]="forgetForm.controls.email"></show-errors>
+              </div>
+              <p><em>A link will be sent to your email to reset the password.</em></p>
+            </div>
+            <button type="submit" class="primary-btn text-center">Send Link</button>
+            <!-- </div> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('.toggle-btn').click(function () {
+      $('body').addClass('show');
+    });
+    $('.close-btn').click(function () {
+      $('body').removeClass('show');
+    });
+
+  });
+</script>
