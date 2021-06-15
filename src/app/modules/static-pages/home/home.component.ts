@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from "@angular/forms";
 import { CurrentUserService } from "../../../common/services/user/current-user.service"
 import { CustomValidators } from "../../../common/directive/custom-validator.directive";
 import { AuthRestService } from 'src/app/common/services/auth/auth-rest.service';
@@ -20,15 +20,17 @@ export class HomeComponent implements OnInit {
   stepTwo: boolean = false;
   modalRef: BsModalRef | null;
   modalRef2: BsModalRef;
-  public mask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/,/\d/];
+
+  public mask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
 
   education = [{ id: 1, name: 'School' }, { id: 2, name: 'Bachelors' }, { id: 3, name: 'Masters' }, { id: 4, name: 'PHD' }];
-  startyear = ['2021','2020','2019','2018','2017','2016','2015','2014','2013','2012','2011','2010'];
-  endyear = ['2021','2020','2019','2018','2017','2016','2015','2014','2013','2012','2011','2010'];
+  startyear = ['2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010'];
+  endyear = ['2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010'];
   constructor(
     public currentUserService: CurrentUserService,
     public authRestService: AuthRestService,
     private router: Router,
+    private fb: FormBuilder,
     private modalService: BsModalService
   ) {
 
@@ -39,19 +41,22 @@ export class HomeComponent implements OnInit {
       role_id: new FormControl("2", []),
       name: new FormControl("", [Validators.required]),
       phone: new FormControl("", [Validators.required]),
-      company_name: new FormControl("", []),
-      end_year: new FormControl("", []),
-      start_year: new FormControl("", []),
-      profile: new FormControl("", []),
-      education_detail: new FormControl("", []),
-      education: new FormControl("", []),
-      experience: new FormControl("", []),
       password: new FormControl("", [Validators.required, Validators.maxLength(20), Validators.minLength(6)]),
       confirmPassword: new FormControl('', [Validators.required]),
       rememberMe: new FormControl('', [Validators.required]),
       location: new FormControl('', []),
       business_name: new FormControl('', []),
-      Image: new FormControl('', [])
+      Image: new FormControl('', []),
+      education: this.fb.array([this.fb.group({
+        education: new FormControl(null, []),
+        education_detail: new FormControl(null, []),
+      })]),
+      experience: this.fb.array([this.fb.group({
+        company_name: new FormControl("", []),
+        end_year: new FormControl("", []),
+        start_year: new FormControl("", []),
+        profile: new FormControl("", [])
+      })])
     });
     this.loginForm = new FormGroup({
       email: new FormControl("", [Validators.required]),
@@ -61,7 +66,12 @@ export class HomeComponent implements OnInit {
       email: new FormControl("", [Validators.required])
     });
   }
-
+  get getEducation() {
+    return this.registerForm.get('education') as FormArray;
+  }
+  get getExperience() {
+    return this.registerForm.get('experience') as FormArray;
+  }
 
   setFormToEmployer(type) {
 
@@ -76,6 +86,23 @@ export class HomeComponent implements OnInit {
     this.registerForm.patchValue({
       role_id: type
     })
+  }
+  
+  addMore() {
+    (this.registerForm.controls.education as FormArray).push(this.fb.group({
+      id: new FormControl(null, []),
+      education_detail: new FormControl(null, [])
+    }));
+  }
+
+  addMoreExperience() {
+    (this.registerForm.controls.experience as FormArray).push(this.fb.group({
+      id: new FormControl(null, []),
+      company_name: new FormControl("", []),
+      end_year: new FormControl("", []),
+      start_year: new FormControl("", []),
+      profile: new FormControl("", [])
+    }));
   }
 
   submitForm(type) {
