@@ -2414,3 +2414,6 @@ section.about-page .row {
     outline: 0;
 }
 
+.form-control {
+    text-transform: none !important;
+}

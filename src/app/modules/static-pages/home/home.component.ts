@@ -74,20 +74,21 @@ export class HomeComponent implements OnInit {
   }
 
   setFormToEmployer(type) {
+    if (!this.stepTwo) {
+      if (type == "1") {
+        this.registerForm.controls.education.setErrors(null);
+        this.registerForm.controls.experience.setErrors(null);
+      } else {
+        this.registerForm.controls.education.setErrors(null);
+        this.registerForm.controls.experience.setErrors(null);
+      }
 
-    if (type == "1") {
-      this.registerForm.controls.education.setErrors(null);
-      this.registerForm.controls.experience.setErrors(null);
-    } else {
-      this.registerForm.controls.education.setErrors(null);
-      this.registerForm.controls.experience.setErrors(null);
+      this.registerForm.patchValue({
+        role_id: type
+      })
     }
-
-    this.registerForm.patchValue({
-      role_id: type
-    })
   }
-  
+
   addMore() {
     (this.registerForm.controls.education as FormArray).push(this.fb.group({
       id: new FormControl(null, []),
@@ -159,6 +160,8 @@ export class HomeComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>) {
+    this.stepTwo = false;
+    this.registerForm.patchValue({ role_id: '2' });
     this.modalRef = this.modalService.show(template);
   }
 
@@ -171,7 +174,11 @@ export class HomeComponent implements OnInit {
             this.currentUserService.setVerifiedUser(response);
             this.loginForm.reset();
             this.modalRef.hide();
-            this.router.navigate(['/job-listing']);
+            if (response.data.role_id == 2) {
+              this.router.navigate(['/job-listing']);
+            } else {
+              this.router.navigate(['/employer-dashboard']);
+            }
             Swal.fire({
               title: response.message,
               icon: 'success',

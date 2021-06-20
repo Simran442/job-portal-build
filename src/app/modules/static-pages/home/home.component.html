@@ -201,123 +201,6 @@
 <!-- Button trigger modal -->
 
 
-<!-- Modal -->
-<!-- <div class="modal fade hmodal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span class="lnr lnr-cross"></span>
-      </button>
-      <div class="modal-body">
-        <h4 class="section-title">Join <span>Job Portal</span></h4>
-        <h6>I’m a:</h6>
-        <form [formGroup]="registerForm" >
-          <ul class="radio-outer" id="myTab" role="tablist">
-            <div class="radio active" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home"
-              aria-selected="true">
-              <input id="radio-1"  type="radio"  formControlName="role_id" value="2">
-              <label for="radio-1" class="radio-label" (click)="setFormToEmployer(2)">Job Seeker</label>
-            </div>
-            <div class="radio" id="profile-tab" data-toggle="tab" role="tab" aria-controls="profile"
-              aria-selected="false">
-              <input id="radio-2" type="radio"  formControlName="role_id" >
-              <label for="radio-2" class="radio-label" (click)="setFormToEmployer(1)">Employer</label>
-            </div>
-          </ul>
-          <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-              <div class="education">
-                <div class="form" *ngIf="!stepTwo">
-                  <span class="image-upload"><input id="formFileSm" type="file" /><i class="fas fa-camera"></i></span>
-                </div>
-                <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
-                  <input type="text" class="form-control" placeholder="education" formControlName="education" >
-                  <show-errors [control]="registerForm.controls.education"></show-errors>
-                </div>
-                <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
-                  <input type="text" class="form-control" placeholder="experience" formControlName="experience" >
-                  <show-errors [control]="registerForm.controls.experience"></show-errors>
-                </div>
-                <div class="form" *ngIf="registerForm.value.role_id == 1 && stepTwo">
-                  <input type="text" class="form-control" placeholder="location" formControlName="location" >
-                  <show-errors [control]="registerForm.controls.location"></show-errors>
-                </div>
-                <div class="form" *ngIf="registerForm.value.role_id == 1 && stepTwo">
-                  <input type="text" class="form-control" placeholder="business/ Indiviual name" formControlName="business_name" >
-                  <show-errors [control]="registerForm.controls.business_name"></show-errors>
-                </div>
-                <div class="form" *ngIf=" !stepTwo">
-                  <input type="text" class="form-control" placeholder="Name" formControlName="name" >
-                  <show-errors [control]="registerForm.controls.name"></show-errors>
-                </div>
-                <div class="form" *ngIf=" !stepTwo">
-                  <input type="email" class="form-control" placeholder="Email" formControlName="email">
-                  <show-errors [control]="registerForm.controls.email"></show-errors>
-                </div>
-                <div class="form" *ngIf=" !stepTwo">
-                  <input type="text" class="form-control" placeholder="Phone Number" formControlName="phone">
-                  <show-errors [control]="registerForm.controls.phone"></show-errors>
-                </div>
-                <div class="form" *ngIf=" !stepTwo">
-                  <input type="password" class="form-control" placeholder="Password" formControlName="password">
-                  <show-errors [control]="registerForm.controls.password"></show-errors>
-                </div>
-                <div class="form" *ngIf=" !stepTwo">
-                  <input type="password" class="form-control" placeholder="Confirm Password"
-                    formControlName="confirmPassword" (blur)="validateConfirmPassword(registerForm)">
-                    <show-errors [control]="registerForm.controls.confirmPassword"></show-errors>
-                </div>
-                <div class="remeber" *ngIf=" !stepTwo">
-                  <input type="checkbox" id="rememberMe" formControlName="rememberMe">
-                  <label for="rememberMe">By clicking the button you confirm that you accept
-                    the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
-                  </label>
-                </div>
-                <show-errors [control]="registerForm.controls.rememberMe"></show-errors>
-              </div>
-            </div> -->
-<!-- Employers -->
-<!-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-              <div class="education">
-                <div class="form">
-                  <span class="image-upload"><input id="formFileSm" type="file" /><i class="fas fa-camera"></i></span>
-                </div>
-                <div class="form">
-                  <input type="text" class="form-control" placeholder="Name" formControlName="employerName">
-                </div>
-                <div class="form">
-                  <input type="email" class="form-control" placeholder="Email" formControlName="employerEmail">
-                </div>
-                <div class="form">
-                  <input type="text" class="form-control" placeholder="Phone Number" formControlName="employerPhone">
-                </div>
-                <div class="form">
-                  <input type="password" class="form-control" placeholder="Password" formControlName="employerPassword">
-                </div>
-                <div class="form">
-                  <input type="password" class="form-control" placeholder="Confirm Password"
-                    formControlName="employerConfirmPassword">
-                </div>
-                <div class="remeber">
-                  <input type="checkbox" value="lsRememberMe" id="rememberMe" formControlName="tandc">
-                  <label for="rememberMe">By clicking the button you confirm that you accept
-                    the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
-                  </label>
-                </div>
-              </div>
-            </div> -->
-<!-- </div>
-          <button type="button" class="primary-btn text-center" (click)="submitForm('firststep')">Create Account</button>
-          <p class="already-acount">Already have an account? <a>Login here</a></p>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-
 <ng-template #template>
   <div class="hmodal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -331,13 +214,13 @@
           <form [formGroup]="registerForm">
             <ul class="radio-outer" id="myTab" role="tablist">
               <div class="radio active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home"
-                aria-selected="true" (click)="setFormToEmployer('2')">
-                <input id="radio-1" type="radio" formControlName="role_id" value="2">
+                aria-selected="true" (click)="setFormToEmployer('2')"  >
+                <input id="radio-1" type="radio" formControlName="role_id" value="2" [attr.disabled]="registerForm.value.role_id == 1&&stepTwo ? '' : null">
                 <label for="radio-1" class="radio-label">Job Seeker</label>
               </div>
               <div class="radio" id="profile-tab" data-toggle="tab" role="tab" aria-controls="profile"
-                aria-selected="false" (click)="setFormToEmployer('1')">
-                <input id="radio-2" type="radio" formControlName="role_id" value="1">
+                aria-selected="false" (click)="setFormToEmployer('1')" >
+                <input id="radio-2" type="radio" formControlName="role_id" value="1" [attr.disabled]="registerForm.value.role_id == 2&&stepTwo ? '' : null">
                 <label for="radio-2" class="radio-label">Employer</label>
               </div>
             </ul>
@@ -349,59 +232,55 @@
                     <span class="image-upload"><input id="formFileSm" type="file" /><i class="fas fa-camera"></i></span>
                   </div>
 
-                  <ng-container formArrayName="education">
-                    <label *ngIf="registerForm.value.role_id == 2 && stepTwo">EDUCATION</label>
+                  <ng-container formArrayName="education" *ngIf="registerForm.value.role_id == 1 && stepTwo">
                     <ng-container *ngFor="let item of getEducation.controls; let goodIndex=index"
                       [formGroupName]="goodIndex">
-                      <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
-
+                      <h4>Education</h4>
+                      <div class="box">
                         <ngx-select [items]="education" formControlName="education" placeholder="Select education">
                         </ngx-select>
                       </div>
-                      <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
-                        <input type="text" class="form-control" placeholder="Give DEtail about your education"
-                          formControlName="education_detail">
-                      </div>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        placeholder="give details about your education" formControlName="education_detail"></textarea>
+
                     </ng-container>
                   </ng-container>
+                  <h5 class="add-more" (click)="addMore()"  *ngIf="registerForm.value.role_id == 1 && stepTwo">+ ADD MORE</h5>
+                  <ng-container formArrayName="experience" *ngIf="registerForm.value.role_id == 1 && stepTwo">
 
-                  <div class="">
-                    <button class="btn btn-primary mb-4" type="button" (click)="addMore()"
-                      *ngIf="registerForm.value.role_id == 2 && stepTwo">Add More</button>
-                  </div>
-                  <ng-container formArrayName="experience">
-                    <label *ngIf="registerForm.value.role_id == 2 && stepTwo">Experience</label>
                     <ng-container *ngFor="let item of getExperience.controls; let goodIndex=index"
                       [formGroupName]="goodIndex">
-
-                      <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
-                        <input type="text" class="form-control" placeholder="Company Name"
-                          formControlName="company_name">
-                        <show-errors [control]="registerForm.controls.company_name"></show-errors>
+                      <h4>Education</h4>
+                      <div class="form">
+                        <input type="text" class="form-control" placeholder="Company Name" formControlName="company_name">
                       </div>
-                      <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
-                        <ngx-select [items]="startyear" formControlName="start_year" placeholder="Start Date">
-                        </ngx-select>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="box">
+                            <ngx-select [items]="endyear" formControlName="end_year" placeholder="End Date">
+                            </ngx-select>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="box">
+                            <ngx-select [items]="endyear" formControlName="end_year" placeholder="End Date">
+                            </ngx-select>
+                          </div>
+                        </div>
                       </div>
-                      <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
-                        <ngx-select [items]="endyear" formControlName="end_year" placeholder="End Date">
-                        </ngx-select>
-                      </div>
-                      <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
-                        <input type="text" class="form-control" placeholder="profile" formControlName="profile">
+                      <div class="form">
+                        <input type="text" class="form-control" placeholder="Business/Individual full name" formControlName="profile">
                       </div>
                     </ng-container>
                   </ng-container>
-                  <div class="" *ngIf="registerForm.value.role_id == 2 && stepTwo">
-                    <button class="btn btn-primary mb-4" type="button" (click)="addMoreExperience()"
-                      *ngIf="registerForm.value.role_id == 2 && stepTwo">Add More</button>
-                  </div>
 
-                  <div class="form" *ngIf="registerForm.value.role_id == 1 && stepTwo">
+                  <h5 class="add-more" *ngIf="registerForm.value.role_id == 1 && stepTwo" (click)="addMoreExperience()">+ ADD MORE</h5>
+
+                  <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
                     <input type="text" class="form-control" placeholder="location" formControlName="location">
                     <show-errors [control]="registerForm.controls.location"></show-errors>
                   </div>
-                  <div class="form" *ngIf="registerForm.value.role_id == 1 && stepTwo">
+                  <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
                     <input type="text" class="form-control" placeholder="business/ Indiviual name"
                       formControlName="business_name">
                     <show-errors [control]="registerForm.controls.business_name"></show-errors>
@@ -437,36 +316,6 @@
                   <show-errors [control]="registerForm.controls.rememberMe"></show-errors>
                 </div>
               </div>
-              <!-- Employers -->
-              <!-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-              <div class="education">
-                <div class="form">
-                  <span class="image-upload"><input id="formFileSm" type="file" /><i class="fas fa-camera"></i></span>
-                </div>
-                <div class="form">
-                  <input type="text" class="form-control" placeholder="Name" formControlName="employerName">
-                </div>
-                <div class="form">
-                  <input type="email" class="form-control" placeholder="Email" formControlName="employerEmail">
-                </div>
-                <div class="form">
-                  <input type="text" class="form-control" placeholder="Phone Number" formControlName="employerPhone">
-                </div>
-                <div class="form">
-                  <input type="password" class="form-control" placeholder="Password" formControlName="employerPassword">
-                </div>
-                <div class="form">
-                  <input type="password" class="form-control" placeholder="Confirm Password"
-                    formControlName="employerConfirmPassword">
-                </div>
-                <div class="remeber">
-                  <input type="checkbox" value="lsRememberMe" id="rememberMe" formControlName="tandc">
-                  <label for="rememberMe">By clicking the button you confirm that you accept
-                    the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
-                  </label>
-                </div>
-              </div>
-            </div> -->
             </div>
             <button type="button" class="primary-btn text-center" (click)="submitForm('firststep')">Create
               Account</button>

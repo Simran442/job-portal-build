@@ -171,7 +171,7 @@ export class DatatableService {
         if (data['sale_type'] === 2) {
           $(row).addClass('updatedRow');
         } else {
-          $(row).addClass('cancelRow');
+         // $(row).addClass('cancelRow');
         }
       },
       lengthMenu: [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],
@@ -184,7 +184,11 @@ export class DatatableService {
           var str = '';
           for (var i = 0; i < tableActions.length; i++) {
             if (tableActions[i]['showAction'] !== 'F') {
-              str = str + '<button class="extraclass ' + tableActions[i]['class'] + '" title="' + tableActions[i]['title'] + '"data-toggle="tooltip"><img src="../../../../assets/images/' + tableActions[i]['img'] + '" href="' + tableId + '" name="' + tableActions[i]['name'] + '" data-id = "' + data + '" /></button>';
+             str = `<div class="action-btn">
+                  <a href="#"><i class="fas fa-pen"></i></a>
+                  <a class="del" href="#"><i class="fas fa-trash"></i></a>
+                </div>`
+              // str = str + '<button class="extraclass ' + tableActions[i]['class'] + '" title="' + tableActions[i]['title'] + '"data-toggle="tooltip"><img src="../../../../assets/images/' + tableActions[i]['img'] + '" href="' + tableId + '" name="' + tableActions[i]['name'] + '" data-id = "' + data + '" /></button>';
             }
           }
           return str;
@@ -197,7 +201,7 @@ export class DatatableService {
         'orderable': true,
         'className': '',
         'render': function (data, type, full, meta) {
-          if (tableId === 'proposal-list' || tableId === 'payment-list' || tableId === 'claims-list' || tableId === 'quote-list') {
+          if (tableId === 'proposal-list' || tableId === 'jobs-list' || tableId === 'claims-list' || tableId === 'quote-list') {
             if (data) {
               return data.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
             } else {
@@ -214,7 +218,7 @@ export class DatatableService {
         'orderable': true,
         'className': '',
         'render': function (data, type, full, meta) {
-          if (tableId === 'proposal-list' || tableId === 'payment-list' || tableId === 'quote-list' || tableId === 'broker-users-list') {
+          if (tableId === 'proposal-list' || tableId === 'jobs-list' || tableId === 'quote-list' || tableId === 'broker-users-list') {
             if (data) {
               return self.changeDateFormatService.dateFormate(data);
             } else {
@@ -231,23 +235,17 @@ export class DatatableService {
         'orderable': true,
         'className': '',
         'render': function (data, type, full, meta) {
-          if (tableId === 'approved-users-list' || tableId === 'quote-list' || tableId === 'broker-users-list' || tableId === 'proposal-list') {
-            return '<button class="statusBtn active-btn ' + data + '" id="active-inactive">' + data + '</button>';
+          if (tableId === 'approved-users-list' || tableId === 'jobs-list') {
+            if (data == 'Pending') {
+              return '<td class="status-data" >' + data + '</td>';
+
+            } else {
+              return '<td class="success status-data">' + data + '</td>';
+
+            }
+
           } else {
-            return '<button class="statusBtn active-btn ' + data + '">' + data + '</button>';
-          }
-        }
-      },
-      {
-        'targets': storeColumn,
-        'searchable': false,
-        'orderable': true,
-        'className': '',
-        'render': function (data, type, full, meta) {
-          if (data) {
-            return '<button class="detail-btn"><a href="stores/manager-store/' + data + '">Lojas</a></button>';
-          } else {
-            return 'N/A';
+            return '<td class="status-data" >' + data + '</td>';
           }
         }
       },
@@ -257,7 +255,7 @@ export class DatatableService {
         $('td', row).unbind('click');
         $('td', row).bind('click', () => {
           const tableID = $(row).closest('table').attr('id');
-          if (tableID === 'approved-users-list' || tableID === 'inprogress-users-list' || tableId === 'quote-list' || tableId === 'broker-users-list' || tableId === 'proposal-list' || tableId === 'payment-list'
+          if (tableID === 'approved-users-list' || tableID === 'jobs-list' || tableId === 'quote-list' || tableId === 'broker-users-list' || tableId === 'proposal-list' || tableId === 'payment-list'
           ) {
             this.selectedRow = data;
           }
@@ -284,14 +282,14 @@ export class DatatableService {
           const tfoot = $('#' + tableId + ' tfoot tr');
           $('#' + tableId + ' thead').prepend(tfoot);
           if (json.code === 201) {
-            if (tableId == 'inprogress-users-list' || tableId == 'approved-users-list' || tableId == 'broker-users-list') {
+            if (tableId == 'inprogress-users-list' || tableId == 'jobs-list' || tableId == 'broker-users-list') {
               for (var i = 0; i < json.data.length; i++) {
                 if (json.data[i]['status'] == 0) { //New Request Step One
                   json.data[i]['status'] = 'NOVO PEDIDO';
                 } else if (json.data[i]['status'] == 1) { //Request is approved by admin and user completing the rest info
-                  json.data[i]['status'] = 'PENDENTE';
+                  json.data[i]['status'] = 'Pending';
                 } else if (json.data[i]['status'] == 2) { //User completed the step two and admin need to look and accept/reject
-                  json.data[i]['status'] = 'Concluída';
+                  json.data[i]['status'] = 'Aproved';
                 } else if (json.data[i]['status'] == 3) { //User request finally become approved user
                   json.data[i]['status'] = 'ATIVO';
                 } else if (json.data[i]['status'] == 4) { //Request rejected by admin
@@ -302,68 +300,12 @@ export class DatatableService {
               }
             }
 
-
-
-            if (tableId == 'claims-list') {
-              for (var i = 0; i < json.data.length; i++) {
-                if (json.data[i]['status'] == 1) {
-                  json.data[i]['status'] = 'ABERTO'; //Claim is OPEN
-                } else if (json.data[i]['status'] == 2) {
-                  json.data[i]['status'] = 'FECHADO'; //Claim is CLOSED
-                } else if (json.data[i]['status'] == 3) {
-                  json.data[i]['status'] = 'DECLINADO'; //Claim is DECLINED
-                }
-              }
-            }
             if (tableId == 'approved-users-list') {
               self.approvedUserCount = json.recordsTotal;
             } else {
               self.resultCount = json.recordsTotal;
             }
 
-            // if (tableId == 'payment-list') {
-            //   for (var i = 0; i < json.data.length; i++) {
-            //     if (json.data[i]['status'] == 1) {
-            //       json.data[i]['status'] = 'PENDENTE'; //Payment Is Pending
-            //     } else if (json.data[i]['status'] == 2) {
-            //       json.data[i]['status'] = 'PAGO'; //Proposal Is Paidout
-            //     }
-            //     if (json.data[i]['payment_type'] == 2) {
-            //       json.data[i]['payment_type'] = 'Boleto';
-            //     } else if (json.data[i]['payment_type'] == 1) {
-            //       json.data[i]['payment_type'] = 'Credit Card';
-            //     }
-            //     if (json.data[i]['installments'] == 7176) {
-            //       json.data[i]['installments'] = '0+2';
-            //     } else if (json.data[i]['installments'] == 7178) {
-            //       json.data[i]['installments'] = '1+1';
-            //     } else if (json.data[i]['installments'] == 7179) {
-            //       json.data[i]['installments'] = '1+2';
-            //     } else if (json.data[i]['installments'] == 7180) {
-            //       json.data[i]['installments'] = '0+3';
-            //     } else if (json.data[i]['installments'] == 7181) {
-            //       json.data[i]['installments'] = '0+4';
-            //     } else if (json.data[i]['installments'] == 7182) {
-            //       json.data[i]['installments'] = '1+3';
-            //     } else if (json.data[i]['installments'] == 7183) {
-            //       json.data[i]['installments'] = '0+5';
-            //     } else if (json.data[i]['installments'] == 7184) {
-            //       json.data[i]['installments'] = '1+4';
-            //     } else if (json.data[i]['installments'] == 7185) {
-            //       json.data[i]['installments'] = '0+6';
-            //     } else if (json.data[i]['installments'] == 7186) {
-            //       json.data[i]['installments'] = '1+5';
-            //     } else if (json.data[i]['installments'] == 7187) {
-            //       json.data[i]['installments'] = '1+6';
-            //     } else if (json.data[i]['installments'] == 7188) {
-            //       json.data[i]['installments'] = '0+7';
-            //     } else if (json.data[i]['installments'] == 7189) {
-            //       json.data[i]['installments'] = 'à vista';
-            //     } else if (json.data[i]['installments'] == 7209) {
-            //       json.data[i]['installments'] = '10';
-            //     }
-            //   }
-            // }
             return json.data;
           } else if (json.code === 404) {
             return '';

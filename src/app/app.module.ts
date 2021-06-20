@@ -14,6 +14,7 @@ import { AuthRestService } from './common/services/auth/auth-rest.service';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ChangeDateFormatService } from './common/services/date-picker/change-date-format.service';
 
 @NgModule({
   schemas: [
@@ -34,7 +35,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     BrowserAnimationsModule
   ],
   exports:[SharedModule],
-  providers: [CurrentUserService, AuthRestService,
+  providers: [CurrentUserService, AuthRestService,ChangeDateFormatService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,

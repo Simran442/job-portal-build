@@ -1,47 +1,93 @@
 <header class="site-header inner-header">
-    <div class="container">
-       <div class="header-nav">
-          <div class="logo">
-             <img routerLink="" src="../../../assets/images/logo.png" alt="logo" />
-          </div>
-          <div class="nav">
-             <div class="login-btn">
-                <ul>
-                   <li><a href="#" data-toggle="modal" data-target="#login" class="post-job-btn">Post A Job</a></li>
-                </ul>
-             </div>
-             <div class="cart-section">
-                <ul>
-                   <li><a href="#"><i class="far fa-comment"></i><span class="count"></span></a></li>
-                   <li><a href="#"><i class="far fa-bell"></i><span class="count"></span></a></li>
-                   <li><a class="mini-photo-wrapper" href="#"><img class="mini-photo"
-                            src="../../../assets/images/author.png" alt="user" />John Doe <span
-                            class="lnr lnr-chevron-down"></span></a>
-                      <div class="menu-container">
-                         <ul class="user-menu">
-                            <li class="user-menu__item user-setting"><a class="user-menu-link" href="#">Settings</a></li>
-                            <li class="user-menu__item">
-                               <a class="user-menu-link" href="#">
-                                  <div><span class="lnr lnr-chevron-right"></span>Edit Profile</div>
-                               </a>
-                            </li>
-                            <li class="user-menu__item">
-                               <a class="user-menu-link" href="#">
-                                  <div><span class="lnr lnr-chevron-right"></span>Block List</div>
-                               </a>
-                            </li>
-                            <li class="user-menu__item">
-                               <a class="user-menu-link active" href="#">
-                                  <div><span class="lnr lnr-chevron-right"></span> Log Out</div>
-                               </a>
-                            </li>
-                         </ul>
-                      </div>
-                   </li>
-                </ul>
-             </div>
- 
-          </div>
-       </div>
-    </div>
- </header>
+   <div class="container">
+      <div class="header-nav">
+         <div class="logo">
+            <img routerLink="" src="../../../assets/images/logo.png" alt="logo" />
+         </div>
+         <div class="nav">
+            <div class="login-btn">
+               <ul>
+                  <li><a class="post-job-btn" (click)="jobModalOpen(addJobs)">Post A Job</a></li>
+               </ul>
+            </div>
+            <div class="cart-section">
+               <ul>
+                  <li><a href="#"><i class="far fa-comment"></i><span class="count"></span></a></li>
+                  <li><a href="#"><i class="far fa-bell"></i><span class="count"></span></a></li>
+                  <li><a class="mini-photo-wrapper" href="#"><img class="mini-photo"
+                           src="../../../assets/images/author.png" alt="user" />John Doe <span
+                           class="lnr lnr-chevron-down"></span></a>
+                     <div class="menu-container">
+                        <ul class="user-menu">
+                           <li class="user-menu__item user-setting"><a class="user-menu-link" href="#">Settings</a></li>
+                           <li class="user-menu__item">
+                              <a class="user-menu-link" href="#">
+                                 <div><span class="lnr lnr-chevron-right"></span>Edit Profile</div>
+                              </a>
+                           </li>
+                           <li class="user-menu__item">
+                              <a class="user-menu-link" href="#">
+                                 <div><span class="lnr lnr-chevron-right"></span>Block List</div>
+                              </a>
+                           </li>
+                           <li class="user-menu__item">
+                              <a class="user-menu-link active" href="#">
+                                 <div><span class="lnr lnr-chevron-right"></span> Log Out</div>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </li>
+               </ul>
+            </div>
+
+         </div>
+      </div>
+   </div>
+</header>
+
+<!--popup--->
+
+<ng-template #addJobs>
+   <div class="hmodal" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span class="lnr lnr-cross"></span>
+            </button>
+            <div class="modal-body">
+               <h4 class="section-title">Post A <span>Job</span></h4>
+               <form class="post-job" [formGroup]="jobPostForm" (ngSubmit)="submitStep()">
+                  <div class="education">
+                     <h4>Add Basic Details</h4>
+                     <div class="form">
+                        <input type="text" class="form-control" placeholder="Add Job title" formControlName="title">
+                        <show-errors [control]="jobPostForm.controls.title"></show-errors>
+
+                     </div>
+                     <div class="box">
+                        <ngx-select [items]="emplyment_type_list" formControlName="type" placeholder="Employement Type">
+                        </ngx-select>
+                        <show-errors [control]="jobPostForm.controls.type"></show-errors>
+
+                     </div>
+                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        placeholder="Job Description" formControlName="description"></textarea>
+                     <show-errors [control]="jobPostForm.controls.description"></show-errors>
+                     <div class="form">
+                        <input type="text" class="form-control" placeholder="Add Salary" formControlName="salary">
+                        <show-errors [control]="jobPostForm.controls.salary"></show-errors>
+                     </div>
+                     <div class="form">
+                        <input type="text" class="form-control" placeholder="Location" formControlName="location">
+                        <show-errors [control]="jobPostForm.controls.location"></show-errors>
+                     </div>
+                  </div>
+                  <button class="primary-btn text-center" type="submit">Next <span
+                        class="lnr lnr-arrow-right"></span></button>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</ng-template>

@@ -12,6 +12,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeDashboardLayoutComponent } from './components/layouts/home-dashboard-layout/home-dashboard-layout.component';
+import { LoaderComponent } from './components/loader/loader.component'
 import { DashboardLayoutComponent } from './components/layouts/dashboard-layout/dashboard-layout.component';
 import { NgxSelectModule, INgxSelectOptions } from 'ngx-select-ex';
 
@@ -28,6 +29,7 @@ const CustomSelectOptions: INgxSelectOptions = { // Check the interface for more
     ShowErrorsComponent,
     FooterComponent,
     HeaderComponent,
+    LoaderComponent,
     HomeDashboardLayoutComponent,
     DashboardLayoutComponent],
   imports: [
@@ -55,6 +57,7 @@ const CustomSelectOptions: INgxSelectOptions = { // Check the interface for more
     FooterComponent,
     HeaderComponent,
     ShowErrorsComponent,
+    LoaderComponent,
     HomeDashboardLayoutComponent,
     DashboardLayoutComponent,
     FormsModule,
