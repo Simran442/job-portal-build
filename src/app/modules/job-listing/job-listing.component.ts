@@ -39,6 +39,7 @@ export class JobListingComponent implements OnInit {
           this.showLoader = false;
           this.jobsList = response.data;
         } else if (response.status === 0 && response.code === 201) {
+          this.showLoader = false;
           Swal.fire({
             title: response.message,
             icon: 'success',
@@ -49,6 +50,7 @@ export class JobListingComponent implements OnInit {
             showConfirmButton: false
           })
         } else {
+          this.showLoader = false;
           Swal.fire({
             title: response.message,
             icon: 'error',

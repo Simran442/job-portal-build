@@ -2417,3 +2417,7 @@ section.about-page .row {
 .form-control {
     text-transform: none !important;
 }
+
+.form-control:focus {
+    box-shadow: none !important;
+}

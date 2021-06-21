@@ -16,14 +16,22 @@ import Swal from 'sweetalert2';
 export class HeaderComponent implements OnInit {
   modalRef: BsModalRef | null;
   emplyment_type_list = [{ id: 1, name: 'Any' }, { id: 2, name: 'Full Time' }, { id: 3, name: 'Part Time' }, { id: 4, name: 'Freelance' }];
+  currentUser;
+  description = [{ id: 1, name: 'Node js' }, { id: 2, name: 'MySQl' }, { id: 3, name: 'Angular Js' }, { id: 4, name: 'React Js' }]
   jobPostForm: FormGroup;
-  constructor(private modalService: BsModalService, private router: Router, public currentUserService: CurrentUserService, public authRestService: AuthRestService) { }
+  isClick : Boolean = false;
+  constructor(private modalService: BsModalService, private router: Router, public currentUserService: CurrentUserService, public authRestService: AuthRestService) { 
+  
+    const currentUser = localStorage.getItem('currentUser');
+    this.currentUser = JSON.parse(currentUser);
+  }
 
   ngOnInit() {
     this.jobPostForm = new FormGroup({
       title: new FormControl("", [Validators.required]),
       type: new FormControl("", [Validators.required]),
       description: new FormControl("", [Validators.required]),
+      descriptions: new FormControl("", [Validators.required]),
       salary: new FormControl("", [Validators.required,CustomValidators.numbersOnly]),
       location: new FormControl("", [Validators.required])
     });
@@ -42,6 +50,7 @@ export class HeaderComponent implements OnInit {
           if (response.status === 1 && response.code === 201) {
             this.jobPostForm.reset();
             this.modalRef.hide();
+            window.location.reload();
             this.router.navigate(['/employer-dashboard']);
             Swal.fire({
               title: response.message,
@@ -77,5 +86,15 @@ export class HeaderComponent implements OnInit {
     } else {
       this.currentUserService.validateAllFormFields(this.jobPostForm);
     }
+  }
+
+  logout(){
+    this.isClick = true;
+    localStorage.clear();
+  }
+
+  Signout(){
+    localStorage.clear();
+    this.router.navigateByUrl('/')
   }
 }

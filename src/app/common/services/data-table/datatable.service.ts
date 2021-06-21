@@ -152,8 +152,8 @@ export class DatatableService {
     const finalDom = '<"top"' + topDom + '<"clear">>' + bottomDom + '<"bottom"<"clear">>';
     const tableElem = $('#' + tableId).DataTable({
       language: {
-        emptyTable: 'Não há itens para visualizar',
-        searchPlaceholder: "Buscar",
+        emptyTable: 'There are no items to view',
+        searchPlaceholder: "Search",
         search: "",
         paginate: {
           first: "",
@@ -162,6 +162,7 @@ export class DatatableService {
           previous: '&#8592;' // or '←' 
         }
       },
+      searching:false,
       pagingType: 'simple_numbers',
       processing: processing,
       serverSide: serverSide,

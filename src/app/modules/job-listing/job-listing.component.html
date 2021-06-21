@@ -34,10 +34,14 @@
          <div class="col-sm-6 col-xs-12 col-md-4 col-lg-4" *ngFor="let job of jobsList">
             <div class="recent-job-list">
                <h3>{{job.title}}</h3>
-               <p>Skills Required:<span> Angular, JQuery, Ruby, Vue.js</span></p>
+               <p>Skills Required:<span> {{job.description == '1' ? 'Node js' :job.description == '2' ? 'MySQl' :
+                     job.description == '3' ? 'Angular Js': 'React Js' }}</span></p>
                <p>$ {{job.salary}} / hour</p>
                <a href="#" class="apply-now-btn">Apply</a>
             </div>
+         </div>
+         <div *ngIf="jobsList.length  == 0">
+            <p>No Data Found</p>
          </div>
          <!-- <div class="col-sm-6 col-xs-12 col-md-4 col-lg-4">
             <div class="recent-job-list">

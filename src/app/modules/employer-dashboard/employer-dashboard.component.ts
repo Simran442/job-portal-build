@@ -20,13 +20,16 @@ import { ChangeDateFormatService } from '../../common/services/date-picker/chang
 })
 export class EmployerDashboardComponent implements OnInit {
   listener: Function;
-
+  currentUser;
   constructor( private title: Title,
     private renderer: Renderer,
     public currentUserService: CurrentUserService,
     private datatableService: DatatableService,
     private modalService: BsModalService,
-    private datePipe: DatePipe) { }
+    private datePipe: DatePipe) { 
+      const currentUser = localStorage.getItem('currentUser');
+      this.currentUser = JSON.parse(currentUser);
+    }
 
   ngOnInit(): void {
     this.getjobsList()
@@ -58,19 +61,19 @@ export class EmployerDashboardComponent implements OnInit {
    */
   getjobsList() {
     const tableActions = [
-      { name: 'view', class: 'fas fa-pen', img: 'eye.svg', title: 'Visão' },
-      { name: 'delete', class: 'fas fa-trash', img: 'eye.svg', title: 'Visão' },
+      { name: 'Edit', class: 'fas fa-pen', img: 'eye.svg', title: 'Edit' },
+      { name: 'delete', class: 'fas fa-trash', img: 'eye.svg', title: 'Delete' },
     ];
     const url = AppApi.addJobsUrl + '/list';
     const reqParam = [
-      { key: 'status', value: 0 }
+      { key: 'status', value: 0  }
     ];
     const tableColumns = [
       { title: 'Job Title', data: 'title' },
-      { title: 'Applicants', data: 'description' },
+      { title: 'Applicants', data: 'id' },
       { title: 'Status', data: 'status' },
-      { title: 'Date Period', data: 'status' },
-      { title: 'Ações', data: 'id' },
+      { title: 'Date Period', data: 'created_at' },
+      { title: 'Action', data: 'id' },
     ];
     if (!$.fn.dataTable.isDataTable('#jobs-list')) {
       this.datatableService.commonDataTable('jobs-list', url, 'full_numbers', tableColumns, 10, true, true, 'lt', 'irp', undefined, [0, 'undefined'], '', reqParam, tableActions, 4, '', '', '', [2], [], [], []);

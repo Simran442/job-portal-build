@@ -7,17 +7,20 @@
          <div class="nav">
             <div class="login-btn">
                <ul>
-                  <li><a class="post-job-btn" (click)="jobModalOpen(addJobs)">Post A Job</a></li>
+                  <li *ngIf="currentUser.role_id !== 2"><a class="post-job-btn" (click)="jobModalOpen(addJobs)">Post A
+                        Job</a></li>
                </ul>
             </div>
             <div class="cart-section">
                <ul>
                   <li><a href="#"><i class="far fa-comment"></i><span class="count"></span></a></li>
                   <li><a href="#"><i class="far fa-bell"></i><span class="count"></span></a></li>
-                  <li><a class="mini-photo-wrapper" href="#"><img class="mini-photo"
-                           src="../../../assets/images/author.png" alt="user" />John Doe <span
-                           class="lnr lnr-chevron-down"></span></a>
-                     <div class="menu-container">
+                  <li><a class="mini-photo-wrapper" (click)="logout()"><img class="mini-photo"
+                           src="../../../assets/images/author.png" alt="user" />{{currentUser ? currentUser.name :
+                        'Test'}} <span class="lnr lnr-chevron-down"></span></a>
+                        {{isCheck}}
+                     <!-- <div [ngClass]="isCheck ? menu-container :''"> -->
+                       <div class="menu-container">
                         <ul class="user-menu">
                            <li class="user-menu__item user-setting"><a class="user-menu-link" href="#">Settings</a></li>
                            <li class="user-menu__item">
@@ -31,7 +34,7 @@
                               </a>
                            </li>
                            <li class="user-menu__item">
-                              <a class="user-menu-link active" href="#">
+                              <a class="user-menu-link active"(click)=Signout()>
                                  <div><span class="lnr lnr-chevron-right"></span> Log Out</div>
                               </a>
                            </li>
@@ -72,8 +75,8 @@
 
                      </div>
                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                        placeholder="Job Description" formControlName="description"></textarea>
-                     <show-errors [control]="jobPostForm.controls.description"></show-errors>
+                        placeholder="Job Description" formControlName="descriptions"></textarea>
+                     <show-errors [control]="jobPostForm.controls.descriptions"></show-errors>
                      <div class="form">
                         <input type="text" class="form-control" placeholder="Add Salary" formControlName="salary">
                         <show-errors [control]="jobPostForm.controls.salary"></show-errors>
@@ -82,6 +85,12 @@
                         <input type="text" class="form-control" placeholder="Location" formControlName="location">
                         <show-errors [control]="jobPostForm.controls.location"></show-errors>
                      </div>
+                     <div class="form">
+                        <ngx-select [items]="description" formControlName="description" placeholder="Select 
+                        skills">
+                        </ngx-select>
+                     </div>
+                     <show-errors [control]="jobPostForm.controls.description"></show-errors>
                   </div>
                   <button class="primary-btn text-center" type="submit">Next <span
                         class="lnr lnr-arrow-right"></span></button>

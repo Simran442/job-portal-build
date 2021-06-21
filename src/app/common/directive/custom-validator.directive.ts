@@ -117,7 +117,7 @@ export class CustomValidators {
         let isValid = true;
         const message = {
             numbersOnly: {
-                message: 'Por favor insira apenas números'
+                message: 'Please enter numbers only'
             }
         };
         if (reg.test(inputFieldValue)) {
@@ -137,7 +137,7 @@ export class CustomValidators {
         let isValid = true;
         const message = {
             numbersOnly: {
-                message: 'Por favor insira apenas números'
+                message: 'Please enter numbers only'
             }
         };
         if (reg.test(inputFieldValue)) {
