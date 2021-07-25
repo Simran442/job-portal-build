@@ -29,6 +29,26 @@ export class AuthRestService {
       });
   }
 
+
+   /**
+   * Generic Get Method
+   * @param apiUrl api url
+   */
+    public delete(apiUrl: string) {
+      return this.apiService.delete(apiUrl)
+        .toPromise().then((res: any) => {
+          return res;
+        }).catch(error => {
+          let badRequestError = {
+            success: false,
+            data: null,
+            message: "Server Error, Something went wrong!"
+          };
+          return badRequestError;
+        });
+    }
+  
+
   /**
    * Generic Post Method
    * @param apiUrl api url

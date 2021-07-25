@@ -5,7 +5,7 @@ import { EmployerDashboardComponent } from "./employer-dashboard.component";
 import { EmployerDashboardRoutingModule } from './employer-dashboard-routing.module';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from '@angular/router';
-
+import { NgxSelectModule, INgxSelectOptions } from 'ngx-select-ex';
 
 @NgModule({
   declarations: [EmployerDashboardComponent],
@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
     EmployerDashboardRoutingModule,
     SharedModule,
     FormsModule,
+    NgxSelectModule,
     ReactiveFormsModule,
     SharedModule
   ]

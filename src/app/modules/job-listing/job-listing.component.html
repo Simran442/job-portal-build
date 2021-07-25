@@ -2,42 +2,47 @@
    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <app-loader *ngIf="showLoader"></app-loader>
 <section class="inner-banner">
-   <div class="container">
-      <h1 class="section-title">Best Online Job <span>Portal</span></h1>
-      <ul class="radio-outer">
-         <div class="radio active">
-            <input id="radio-1" name="radio" type="radio" checked="">
-            <label for="radio-1" class="radio-label">Profile</label>
-         </div>
-         <div class="radio">
-            <input id="radio-2" name="radio" type="radio">
-            <label for="radio-2" class="radio-label">Skills</label>
-         </div>
-         <div class="radio">
-            <input id="radio-3" name="radio" type="radio">
-            <label for="radio-3" class="radio-label">Location</label>
-         </div>
-      </ul>
-      <div class="search">
-         <input type="text" placeholder="Search your desired profile here...">
-         <div class="button-src">
-            <span class="lnr lnr-magnifier"></span>
+   <form [formGroup]="searchForm">
+      <div class="container">
+         <h1 class="section-title">Best Online Job <span>Portal</span></h1>
+         <ul class="radio-outer">
+            <div class="radio active">
+               <input id="radio-1" type="radio" checked="" value="1" formControlName="searchBy"
+                  (click)="selectCheckbox(1)">
+               <label for="radio-1" class="radio-label">Profile</label>
+            </div>
+            <div class="radio">
+               <input id="radio-2" type="radio" (click)="selectCheckbox(2)" value="2" formControlName="searchBy">
+               <label for="radio-2" class="radio-label">Skills</label>
+            </div>
+            <div class="radio">
+               <input id="radio-3" type="radio" (click)="selectCheckbox(3)" value="3" formControlName="searchBy">
+               <label for="radio-3" class="radio-label">Location</label>
+            </div>
+         </ul>
+         <div class="search">
+            <input type="text" placeholder="Search your desired profile here..." formControlName="search"
+               (input)="searchfilter(searchForm.value.search)">
+            <div class="button-src">
+               <span class="lnr lnr-magnifier"></span>
+            </div>
          </div>
       </div>
-
-   </div>
+   </form>
 </section>
 <section class="job-listing-inner">
    <div class="container">
       <h2 class="section-title text-center">Most Recent <span>Jobs</span></h2>
       <div class="row g-4">
          <div class="col-sm-6 col-xs-12 col-md-4 col-lg-4" *ngFor="let job of jobsList">
-            <div class="recent-job-list">
+            <div class="recent-job-list" (click)="ViewJobsDetail(job.id)">
                <h3>{{job.title}}</h3>
                <p>Skills Required:<span> {{job.description == '1' ? 'Node js' :job.description == '2' ? 'MySQl' :
                      job.description == '3' ? 'Angular Js': 'React Js' }}</span></p>
                <p>$ {{job.salary}} / hour</p>
-               <a href="#" class="apply-now-btn">Apply</a>
+               <button type="button" class="apply-now-btn" (click)="applyJob(job.id)"> <img
+                     src="../../../assets/images/ApplyButton.png " /></button>
+
             </div>
          </div>
          <div *ngIf="jobsList.length  == 0">

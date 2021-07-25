@@ -1,4 +1,4 @@
-
+<app-loader *ngIf="showLoader"></app-loader>
 <section class="inner-banner">
    <div class="container">
       <h1 class="section-title">Messages</h1>
@@ -46,9 +46,9 @@
       <!---tabs-->
       <div class="tab-content col-sm-9" id="myTabContent">
          <div class="tab-pane fade show active" id="editprofile" role="tabpanel">
-            <form>
+            <form [formGroup]="ProfileForm" (ngSubmit)="updateProfile()">
                <div class="user-avatar">
-                  <img src="../../../assets/images/user.png" alt="user">
+                  <img src="../../../assets/images/default.jpg" alt="user">
                   <div class="broser-file">
                      <input type="file" id="myfile" name="myfile" class="browse-avatar">
                      <i class="fas fa-camera"></i>
@@ -56,21 +56,27 @@
                </div>
                <div class="form-group">
                   <label for="formGroupExampleInput">Email</label>
-                  <input type="email" class="form-control" id="formGroupExampleInput" placeholder="JOHNDOE@GMAIL.COM">
+                  <input type="email" class="form-control" id="formGroupExampleInput" placeholder="email" formControlName="email">
+                  <show-errors [control]="ProfileForm.controls.email"></show-errors>
+
                </div>
                <div class="form-group">
                   <label for="formGroupExampleInput2">Phone Number</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="+1-958-885-741">
+                  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="+1-958-885-741" formControlName="phone">
+                  <show-errors [control]="ProfileForm.controls.phone"></show-errors>
+
                </div>
                <div class="form-group">
                   <label for="formGroupExampleInput">Password</label>
-                  <input type="password" class="form-control" id="formGroupExampleInput1" placeholder="*******">
+                  <input type="password" formControlName="password" class="form-control" id="formGroupExampleInput1" placeholder="">
+                  <show-errors [control]="ProfileForm.controls.password"></show-errors>
                </div>
                <button type="submit" class="primary-btn">Save & Exit</button>
             </form>
          </div>
          <div class="tab-pane fade" id="blocklist" role="tabpanel">
-            <ul>
+            <p>No Data Found</p>
+            <!-- <ul>
                <li>
                   <div class="block-list"><img src="../../../assets/images/author.png" alt="user">
                      <h5>Smith J.</h5>
@@ -107,8 +113,8 @@
                   </div>
                   <a class="blk-btn">Unblock</a>
                </li>
-            </ul>
-            <a href="#" class="primary-btn">Save & Exit</a>
+            </ul> -->
+            <!-- <a href="#" class="primary-btn">Save & Exit</a> -->
          </div>
 
       </div>

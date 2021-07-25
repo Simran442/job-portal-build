@@ -9,37 +9,40 @@
 <section class="inner-banner">
    <div class="container">
       <a href="#" class="post-jobs-btn">Post Job</a>
-      <h1 class="section-title">Graphic <span>Designer</span></h1>
-      <p>Full Time | $15.50/hour</p>
+      <h1 class="section-title">{{jobDetail&& jobDetail.title ? jobDetail.title : ''}} </h1>
+      <p>{{ jobDetail && jobDetail.type == 1 ? 'Any' : jobDetail &&jobDetail.type == 2 ? 'Full Time' : jobDetail
+         &&jobDetail.type
+         == 3 ? 'Part Time':'Freelance' }} | $ {{jobDetail &&jobDetail.salary ? jobDetail.salary : ''}} / hour</p>
 
    </div>
 </section>
 <section class="job-details">
    <div class="container">
       <div class="job-details-title">
-         <h5>UI Designer</h5>
-         <p>$ 15.50 / hour</p>
+         <h5>{{jobDetail&& jobDetail.title ? jobDetail.title : ''}}</h5>
+         <p>$ {{jobDetail&&jobDetail.salary ? jobDetail.salary : ''}} / hour</p>
       </div>
       <div class="job-detail-links">
-         <p>Location: <span>Downtown, Toronto</span></p>
-         <p>Employement Type: <span>Full Time</span></p>
-         <p>Posted By:<span class="author-name">John Doe</span></p>
-         <ul>
+         <p>Location: <span>{{jobDetail&&jobDetail.location ? jobDetail.location : ''}}</span></p>
+         <p>Employement Type: <span>{{ jobDetail&&jobDetail.type == 1 ? 'Any' : jobDetail&&jobDetail.type == 2 ? 'Full
+               Time' : jobDetail&&jobDetail.type
+               == 3 ? 'Part Time':'Freelance' }}</span></p>
+         <!-- <p>Posted By:<span class="author-name">{{jobDetail.}}</span></p> -->
+         <!-- <ul>
             <li>Photoshop</li>
             <li>Illustrator</li>
             <li>XD</li>
             <li>Figma</li>
-         </ul>
+         </ul> -->
       </div>
       <div class="job-details-inner">
          <p>
-            - Landing page and Website Designing (ClickFunnels, iGloo, WordPress, OptimizePress, Elementor, and
-            Booklander)</p>
-         <p>- Article/Blog writing (various niches)</p>
+            - {{jobDetail&&jobDetail.description ? jobDetail.description : ''}}</p>
+         <!-- <p>- Article/Blog writing (various niches)</p>
          <p>- Blog posting, Business listing, and Website Maintenance (WordPress)</p>
          <p>- Graphic designing (Canva and other image editing software)</p>
-         <p> - Social Media Management (Facebook, Instagram, Twitter, Linkedin, Snapchat)</p>
-         <a href="#" class="primary-btn">Apply Now</a>
+         <p> - Social Media Management (Facebook, Instagram, Twitter, Linkedin, Snapchat)</p> -->
+         <a class="primary-btn" (click)="applyJob(jobDetail.id)">Apply Now</a>
       </div>
    </div>
 </section>

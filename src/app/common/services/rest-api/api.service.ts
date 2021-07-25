@@ -23,6 +23,7 @@ export class ApiService {
    */
   getApi(apiUrl: string) {
     return this.http.get<any>(apiUrl, {
+     
       headers: {
         'content-type': 'application/json',
         Authorization: this.currentUserService.token
@@ -106,7 +107,7 @@ export class ApiService {
         showConfirmButton: false
       })
       localStorage.clear();
-      this.router.navigateByUrl("/login");
+      this.router.navigateByUrl("/");
     }
   }
 

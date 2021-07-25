@@ -162,7 +162,7 @@ export class DatatableService {
           previous: '&#8592;' // or '←' 
         }
       },
-      searching:false,
+      searching: false,
       pagingType: 'simple_numbers',
       processing: processing,
       serverSide: serverSide,
@@ -172,7 +172,7 @@ export class DatatableService {
         if (data['sale_type'] === 2) {
           $(row).addClass('updatedRow');
         } else {
-         // $(row).addClass('cancelRow');
+          // $(row).addClass('cancelRow');
         }
       },
       lengthMenu: [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],
@@ -185,11 +185,20 @@ export class DatatableService {
           var str = '';
           for (var i = 0; i < tableActions.length; i++) {
             if (tableActions[i]['showAction'] !== 'F') {
-             str = `<div class="action-btn">
-                  <a href="#"><i class="fas fa-pen"></i></a>
-                  <a class="del" href="#"><i class="fas fa-trash"></i></a>
+              if (tableId == 'jobs-list') {
+                str = `<div class="action-btn">
+                  <button name="edit" class="edit" href='${tableId}'><i class="fas fa-pen"></i></button>
+                  <button class="delete" name="delete"  href='${tableId}'><i class="fas fa-trash"></i></button>
                 </div>`
-              // str = str + '<button class="extraclass ' + tableActions[i]['class'] + '" title="' + tableActions[i]['title'] + '"data-toggle="tooltip"><img src="../../../../assets/images/' + tableActions[i]['img'] + '" href="' + tableId + '" name="' + tableActions[i]['name'] + '" data-id = "' + data + '" /></button>';
+                //    str = `<div class="action-btn">
+                 
+                //   <button class="delete" name="delete"  href='${tableId}'><i class="fas fa-trash"></i></button>
+                // </div>`
+              } else {
+                str = `<div class="action-btn">
+                <button class="delete" name="delete"  href='${tableId}'><i class="fas fa-trash"></i></button>
+              </div>`
+              }
             }
           }
           return str;
@@ -202,7 +211,7 @@ export class DatatableService {
         'orderable': true,
         'className': '',
         'render': function (data, type, full, meta) {
-          if (tableId === 'proposal-list' || tableId === 'jobs-list' || tableId === 'claims-list' || tableId === 'quote-list') {
+          if (tableId === 'jobs-list' || tableId === 'awaiting-list' || tableId === 'approved-list') {
             if (data) {
               return data.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
             } else {
@@ -219,7 +228,7 @@ export class DatatableService {
         'orderable': true,
         'className': '',
         'render': function (data, type, full, meta) {
-          if (tableId === 'proposal-list' || tableId === 'jobs-list' || tableId === 'quote-list' || tableId === 'broker-users-list') {
+          if (tableId === 'jobs-list' || tableId === 'awaiting-list' || tableId === 'approved-list') {
             if (data) {
               return self.changeDateFormatService.dateFormate(data);
             } else {
@@ -236,7 +245,7 @@ export class DatatableService {
         'orderable': true,
         'className': '',
         'render': function (data, type, full, meta) {
-          if (tableId === 'approved-users-list' || tableId === 'jobs-list') {
+          if (tableId === 'jobs-list' || tableId === 'awaiting-list' || tableId === 'approved-list') {
             if (data == 'Pending') {
               return '<td class="status-data" >' + data + '</td>';
 
@@ -256,7 +265,7 @@ export class DatatableService {
         $('td', row).unbind('click');
         $('td', row).bind('click', () => {
           const tableID = $(row).closest('table').attr('id');
-          if (tableID === 'approved-users-list' || tableID === 'jobs-list' || tableId === 'quote-list' || tableId === 'broker-users-list' || tableId === 'proposal-list' || tableId === 'payment-list'
+          if (tableID === 'jobs-list' || tableId === 'awaiting-list' || tableId === 'approved-list'
           ) {
             this.selectedRow = data;
           }
@@ -283,20 +292,14 @@ export class DatatableService {
           const tfoot = $('#' + tableId + ' tfoot tr');
           $('#' + tableId + ' thead').prepend(tfoot);
           if (json.code === 201) {
-            if (tableId == 'inprogress-users-list' || tableId == 'jobs-list' || tableId == 'broker-users-list') {
+            if (tableId == 'jobs-list') {
               for (var i = 0; i < json.data.length; i++) {
                 if (json.data[i]['status'] == 0) { //New Request Step One
                   json.data[i]['status'] = 'NOVO PEDIDO';
-                } else if (json.data[i]['status'] == 1) { //Request is approved by admin and user completing the rest info
-                  json.data[i]['status'] = 'Pending';
+                } else if (json.data[i]['status'] < 2) { //Request is approved by admin and user completing the rest info
+                  json.data[i]['status'] = 'Approved';
                 } else if (json.data[i]['status'] == 2) { //User completed the step two and admin need to look and accept/reject
-                  json.data[i]['status'] = 'Aproved';
-                } else if (json.data[i]['status'] == 3) { //User request finally become approved user
-                  json.data[i]['status'] = 'ATIVO';
-                } else if (json.data[i]['status'] == 4) { //Request rejected by admin
-                  json.data[i]['status'] = 'REJEITADA';
-                } else if (json.data[i]['status'] == 5) { //Deactivate user by admin
-                  json.data[i]['status'] = 'INATIVO';
+                  json.data[i]['status'] = 'Pending';
                 }
               }
             }

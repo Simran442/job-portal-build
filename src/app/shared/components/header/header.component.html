@@ -2,12 +2,12 @@
    <div class="container">
       <div class="header-nav">
          <div class="logo">
-            <img routerLink="" src="../../../assets/images/logo.png" alt="logo" />
+            <img (click)="backButton()" src="../../../assets/images/logo.png" alt="logo" />
          </div>
          <div class="nav">
             <div class="login-btn">
                <ul>
-                  <li *ngIf="currentUser.role_id !== 2"><a class="post-job-btn" (click)="jobModalOpen(addJobs)">Post A
+                  <li *ngIf="currentUser.role_id !== 2"><a class="post-job-btn" (click)="jobModalOpen(addJobs)" id="job-post">Post A
                         Job</a></li>
                </ul>
             </div>
@@ -16,20 +16,19 @@
                   <li><a href="#"><i class="far fa-comment"></i><span class="count"></span></a></li>
                   <li><a href="#"><i class="far fa-bell"></i><span class="count"></span></a></li>
                   <li><a class="mini-photo-wrapper" (click)="logout()"><img class="mini-photo"
-                           src="../../../assets/images/author.png" alt="user" />{{currentUser ? currentUser.name :
+                           src="../../../assets/images/default.jpg" alt="user" />{{currentUser ? currentUser.name :
                         'Test'}} <span class="lnr lnr-chevron-down"></span></a>
-                        {{isCheck}}
                      <!-- <div [ngClass]="isCheck ? menu-container :''"> -->
-                       <div class="menu-container">
+                       <div class="">
                         <ul class="user-menu">
-                           <li class="user-menu__item user-setting"><a class="user-menu-link" href="#">Settings</a></li>
-                           <li class="user-menu__item">
-                              <a class="user-menu-link" href="#">
+                           <li class="user-menu__item user-setting"><a class="user-menu-link" >Settings</a></li>
+                           <li class="user-menu__item" routerLink="/settings">
+                              <a class="user-menu-link">
                                  <div><span class="lnr lnr-chevron-right"></span>Edit Profile</div>
                               </a>
                            </li>
                            <li class="user-menu__item">
-                              <a class="user-menu-link" href="#">
+                              <a class="user-menu-link" routerLink="/settings">
                                  <div><span class="lnr lnr-chevron-right"></span>Block List</div>
                               </a>
                            </li>
@@ -55,7 +54,7 @@
    <div class="hmodal" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
          <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
                <span class="lnr lnr-cross"></span>
             </button>
             <div class="modal-body">

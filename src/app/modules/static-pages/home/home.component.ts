@@ -20,7 +20,11 @@ export class HomeComponent implements OnInit {
   stepTwo: boolean = false;
   modalRef: BsModalRef | null;
   modalRef2: BsModalRef;
-
+  config = {
+    backdrop: true,
+    ignoreBackdropClick: true
+  };
+  currentUser;
   public mask = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
 
   education = [{ id: 1, name: 'School' }, { id: 2, name: 'Bachelors' }, { id: 3, name: 'Masters' }, { id: 4, name: 'PHD' }];
@@ -34,6 +38,7 @@ export class HomeComponent implements OnInit {
     private modalService: BsModalService
   ) {
 
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
   ngOnInit() {
     this.registerForm = new FormGroup({
@@ -66,6 +71,11 @@ export class HomeComponent implements OnInit {
       email: new FormControl("", [Validators.required])
     });
   }
+
+  ngAfterViewInit(){
+
+  }
+
   get getEducation() {
     return this.registerForm.get('education') as FormArray;
   }
@@ -162,7 +172,7 @@ export class HomeComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.stepTwo = false;
     this.registerForm.patchValue({ role_id: '2' });
-    this.modalRef = this.modalService.show(template);
+    this.modalRef = this.modalService.show(template,this.config);
   }
 
   login() {
@@ -219,8 +229,10 @@ export class HomeComponent implements OnInit {
 
   loginModalOpen(content) {
     this.modalRef.hide();
-    this.modalService.show(content);
+    this.modalService.show(content,this.config);
   }
+
+
 
   forgetPasswordForm() {
     if (this.forgetForm.valid) {
@@ -264,6 +276,14 @@ export class HomeComponent implements OnInit {
     } else {
       this.currentUserService.validateAllFormFields(this.forgetForm);
     }
+  }
+
+
+/**close popup */
+  closeModel(){
+    this.modalRef.hide();
+    this.forgetForm.reset();
+    this.registerForm.reset();
   }
 
   /**

@@ -6,7 +6,7 @@
   <div class="container">
     <div class="header-nav">
       <div class="logo">
-        <img routerLink="" src="../../../assets/images/logo.png" />
+        <img  src="../../../assets/images/logo.png" />
       </div>
       <div class="nav">
         <span class="close-btn"><img src="../../../assets/images/cancel.svg" alt="cancel-btn"></span>
@@ -205,7 +205,7 @@
   <div class="hmodal" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModel()">
           <span class="lnr lnr-cross"></span>
         </button>
         <div class="modal-body">
@@ -232,7 +232,7 @@
                     <span class="image-upload"><input id="formFileSm" type="file" /><i class="fas fa-camera"></i></span>
                   </div>
 
-                  <ng-container formArrayName="education" *ngIf="registerForm.value.role_id == 1 && stepTwo">
+                  <ng-container formArrayName="education" *ngIf="registerForm.value.role_id == 2 && stepTwo">
                     <ng-container *ngFor="let item of getEducation.controls; let goodIndex=index"
                       [formGroupName]="goodIndex">
                       <h4>Education</h4>
@@ -245,12 +245,12 @@
 
                     </ng-container>
                   </ng-container>
-                  <h5 class="add-more" (click)="addMore()"  *ngIf="registerForm.value.role_id == 1 && stepTwo">+ ADD MORE</h5>
-                  <ng-container formArrayName="experience" *ngIf="registerForm.value.role_id == 1 && stepTwo">
+                  <h5 class="add-more" (click)="addMore()"  *ngIf="registerForm.value.role_id == 2 && stepTwo">+ ADD MORE</h5>
+                  <ng-container formArrayName="experience" *ngIf="registerForm.value.role_id ==2 && stepTwo">
 
                     <ng-container *ngFor="let item of getExperience.controls; let goodIndex=index"
                       [formGroupName]="goodIndex">
-                      <h4>Education</h4>
+                      <h4>Experience</h4>
                       <div class="form">
                         <input type="text" class="form-control" placeholder="Company Name" formControlName="company_name">
                       </div>
@@ -274,13 +274,13 @@
                     </ng-container>
                   </ng-container>
 
-                  <h5 class="add-more" *ngIf="registerForm.value.role_id == 1 && stepTwo" (click)="addMoreExperience()">+ ADD MORE</h5>
+                  <h5 class="add-more" *ngIf="registerForm.value.role_id == 2 && stepTwo" (click)="addMoreExperience()">+ ADD MORE</h5>
 
-                  <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
+                  <div class="form" *ngIf="registerForm.value.role_id == 1 && stepTwo">
                     <input type="text" class="form-control" placeholder="location" formControlName="location">
                     <show-errors [control]="registerForm.controls.location"></show-errors>
                   </div>
-                  <div class="form" *ngIf="registerForm.value.role_id == 2 && stepTwo">
+                  <div class="form" *ngIf="registerForm.value.role_id == 1 && stepTwo">
                     <input type="text" class="form-control" placeholder="business/ Indiviual name"
                       formControlName="business_name">
                     <show-errors [control]="registerForm.controls.business_name"></show-errors>
@@ -373,7 +373,7 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModel()">
           <span class="lnr lnr-cross"></span>
         </button>
         <div class="modal-body">

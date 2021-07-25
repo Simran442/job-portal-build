@@ -402,7 +402,7 @@ export class ChangeDateFormatService {
       if (day === 'NaN' || month === 'NaN' || year.toString() === 'NaN') {
         return '';
       } else {
-        return day  + '/' + month + '/' + year;
+        return day  + '-' + month + '-' + year;
       }
     } else {
       return '';

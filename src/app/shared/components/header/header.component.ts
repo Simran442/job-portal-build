@@ -19,9 +19,13 @@ export class HeaderComponent implements OnInit {
   currentUser;
   description = [{ id: 1, name: 'Node js' }, { id: 2, name: 'MySQl' }, { id: 3, name: 'Angular Js' }, { id: 4, name: 'React Js' }]
   jobPostForm: FormGroup;
-  isClick : Boolean = false;
-  constructor(private modalService: BsModalService, private router: Router, public currentUserService: CurrentUserService, public authRestService: AuthRestService) { 
-  
+  isClick: Boolean = false;
+  config = {
+    backdrop: true,
+    ignoreBackdropClick: true
+  };
+  constructor(private modalService: BsModalService, private router: Router, public currentUserService: CurrentUserService, public authRestService: AuthRestService) {
+
     const currentUser = localStorage.getItem('currentUser');
     this.currentUser = JSON.parse(currentUser);
   }
@@ -32,20 +36,20 @@ export class HeaderComponent implements OnInit {
       type: new FormControl("", [Validators.required]),
       description: new FormControl("", [Validators.required]),
       descriptions: new FormControl("", [Validators.required]),
-      salary: new FormControl("", [Validators.required,CustomValidators.numbersOnly]),
+      salary: new FormControl("", [Validators.required, CustomValidators.numbersOnly]),
       location: new FormControl("", [Validators.required])
     });
   }
 
 
   jobModalOpen(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+    this.modalRef = this.modalService.show(template, this.config);
   }
 
   submitStep() {
     if (this.jobPostForm.valid) {
       this.authRestService
-        .postApiWitoutToken(AppApi.addJobsUrl + '/add', this.jobPostForm.value)
+        .postApiWitoutToken(AppApi.jobsUrl + '/add', this.jobPostForm.value)
         .then((response) => {
           if (response.status === 1 && response.code === 201) {
             this.jobPostForm.reset();
@@ -88,13 +92,32 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  logout(){
+  closeModal() {
+    this.modalRef.hide();
+    this.jobPostForm.reset();
+  }
+
+  logout() {
     this.isClick = true;
     localStorage.clear();
   }
 
-  Signout(){
+  Signout() {
     localStorage.clear();
     this.router.navigateByUrl('/')
+  }
+
+  /**
+   * back button
+   */
+  backButton() {
+    if (localStorage.getItem('currentUser')) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (this.currentUser.role_id == 1) {
+        this.router.navigateByUrl('/employer-dashboard')
+      } else {
+        this.router.navigateByUrl('/job-listing')
+      }
+    }
   }
 }

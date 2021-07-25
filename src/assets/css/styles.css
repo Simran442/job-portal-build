@@ -2421,3 +2421,19 @@ section.about-page .row {
 .form-control:focus {
     box-shadow: none !important;
 }
+
+.table-responsive {
+    overflow-x: unset !important;
+}
+
+.action-btn .edit {
+    background-color: #fff !important; 
+    border: darkblue !important;
+    margin-right: 12px !important;
+}
+
+.action-btn .delete {
+    background-color: #fff !important;
+    border: darkblue !important;
+   
+}
