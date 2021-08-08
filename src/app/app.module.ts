@@ -15,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ChangeDateFormatService } from './common/services/date-picker/change-date-format.service';
-
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:3025', options: {} };
 @NgModule({
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -32,7 +33,8 @@ import { ChangeDateFormatService } from './common/services/date-picker/change-da
     ReactiveFormsModule,
     FormsModule,
     StaticPagesModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SocketIoModule.forRoot(config)
   ],
   exports:[SharedModule],
   providers: [CurrentUserService, AuthRestService,ChangeDateFormatService,
