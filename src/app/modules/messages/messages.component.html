@@ -11,8 +11,12 @@
 
    </div>
    
-   <input [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" />
-   <button (click)="sendMessage()">Send Message</button>
+   <!-- <div class="chat-messages">
+      <div class="chat-messages-show-container">
+        <ul class="chat-messages-show-list" id="message-lists">
+        </ul>
+      </div>
+   </div> -->
 </section>
 <section class="container">
    <div class="row rounded-lg overflow-hidden chat-box">
@@ -190,21 +194,21 @@
                            <h6>Jason Doe</h6>
                            <small class="small font-weight-bold">25 Dec</small>
                         </div>
-                        <p>Hello John. I’m an expert in p...</p>
+                        <p id="message-lists"></p>
                      </div>
                   </div>
                </div>
                <!-- Typing area -->
-               <form action="#" class="">
+              
                   <div class="input-group">
-                     <input type="text" placeholder="Type Anything" aria-describedby="button-addon2"
-                        class="form-control rounded-0">
+                     <input type="text" placeholder="Type Anything" [(ngModel)]="message" aria-describedby="button-addon2"
+                        class="form-control rounded-0" >
                      <div class="input-group-append">
-                        <button id="button-addon2" type="submit" class="btn btn-link"><span
+                        <button id="button-addon2" type="submit" class="btn btn-link" (click)="SendMessage()"><span
                               class="lnr lnr-arrow-right"></span></button>
                      </div>
                   </div>
-               </form>
+               
             </div>
          </div>
          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
